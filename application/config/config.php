@@ -23,11 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/projet_final_s4/';
+$config['base_url'] = 'http://localhost/projet_final_s4';
 
 /*
 |--------------------------------------------------------------------------
-| Index File 
+| Index File
 |--------------------------------------------------------------------------
 |
 | Typically this will be your index.php file, unless you've renamed it to
