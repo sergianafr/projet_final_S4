@@ -56,15 +56,31 @@
 
   <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
   <script>
+    function create_account(matricule, type_voiture) {
+      $.ajax({
+        url: '<?= site_url('loginclient/home') ?>',
+        type: 'POST',
+        data: {
+          matricule: matricule,
+          type_voiture: type_voiture
+        },
+        success: function(data) {
+          // redirection
+          console.log("Redirection");
+        },
+        error: response => {
+          const data = JSON.parse(response.responseText)
+          $('#errorMsg').html(data.errors)
+        }
+      });
+    }
+
     $('form').submit(function(e) {
       e.preventDefault();
 
       const matricule = $('input[name=matricule]').val();
       let type_voiture = +$('#type_voiture').val();
       type_voiture = type_voiture === 0 ? undefined : type_voiture;
-
-      // console.log(matricule);
-      console.log(type_voiture);
 
       $.ajax({
         url: '<?= site_url('loginclient/verify') ?>',
@@ -74,8 +90,9 @@
           type_voiture: type_voiture
         },
         success: function(data) {
-          if (data.status === 'success') {
-            console.log('Authenticated')
+          if (data.status === 'create') {
+            console.log('Authenticated');
+            create_account(matricule, type_voiture);
           }
         },
         error: response => {

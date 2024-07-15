@@ -13,10 +13,11 @@ class client_model extends CI_Model {
     }
 
     // recuperation client
-    public function login($num_matricule){
+    public function login($num_matricule, $id_type_voiture){
         $num_matricule = $this->db->escape($num_matricule);
         // $num_matricule = "'".$num_matricule."'";
-        $query=$this->db->query('SELECT * FROM client WHERE num_matricule=' . $num_matricule);
+        $query=$this->db->query('SELECT * FROM client WHERE num_matricule = ' . $num_matricule . 
+            ' and id_type_vehicule = ' . $id_type_voiture);
         $res=$query->row_array();
 
         // return null si le client n'existe pas
