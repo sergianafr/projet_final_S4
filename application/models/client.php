@@ -11,14 +11,11 @@ class client extends CI_Model {
     // recuperation client
     public function login($num_matricule){
         $num_matricule = $this->db->escape($num_matricule);
-        $sql = "SELECT * FROM client WHERE num_matricule=?";
-        $query=$this->db->query($sql, $num_matricule);
+        // $num_matricule = "'".$num_matricule."'";
+        $query=$this->db->query('SELECT * FROM client WHERE num_matricule=' . $num_matricule);
         $res=$query->row_array();
 
-        // retourne un tableau associatif ayant comme colonne chaque colonne de la table client
-        // foreach($query->result_array() as $r) {
-        //     $res=$r;
-        // }
+        
         return $res;
     }
 
