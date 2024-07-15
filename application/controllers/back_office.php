@@ -30,8 +30,8 @@ class back_office extends CI_Controller {
 	 */
 	function service(){
 		// La liste des services
-		$data['services'] = [];
-		$data['contents'] = "back_office/service";
+		$data['services'] = ['servic1','servic2','servic3'];
+		$data['contents'] = "back_office/service/service";
 		$this->load->view('templates/back_office_template',$data);
 	}
 }
