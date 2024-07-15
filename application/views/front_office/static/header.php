@@ -25,7 +25,7 @@
       </ul>
     </div>
     <div>
-      <a class="btn btn-outline-secondary" href="">Deconnexion</a>
+      <a class="btn btn-outline-secondary" href="<?= site_url('front_office/login') ?>">Deconnexion</a>
     </div>
   </div>
 </nav>
