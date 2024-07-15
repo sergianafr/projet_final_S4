@@ -46,3 +46,8 @@ CREATE TABLE rendez_vous(
     devis double precision,
     date_payement date default null
 )engine=InnoDB;
+
+CREATE TABLE date_reference(
+    id int primary key auto_increment,
+    date_reference date not null
+)engine=InnoDB;
