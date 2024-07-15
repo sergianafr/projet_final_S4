@@ -54,20 +54,48 @@
     </div>
   </div>
 
+  <!-- view record modal -->
+  <div class="modal" tabindex="-1" role="dialog" id="view-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Creer un compte ?</h5>
+        </div>
+        <div class="modal-body">
+          <button class="btn btn-success" id="btn_create">Oui</button>
+          <button class="btn btn-danger" onclick="close_modal()">Non</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
   <script>
+    $('#btn_create').click(() => {
+      const matricule = $('input[name=matricule]').val();
+      let type_voiture = +$('#type_voiture').val();
+      type_voiture = type_voiture === 0 ? undefined : type_voiture;
+
+      create_account(matricule, type_voiture);
+    });
+
+    function show_modal() {
+      $('#view-modal').modal('show');
+    }
+
+    function close_modal() {
+      $('#view-modal').modal('hide');
+    }
+
     function create_account(matricule, type_voiture) {
       $.ajax({
-        url: '<?= site_url('loginclient/home') ?>',
+        url: '<?= site_url('login_client/home_account') ?>',
         type: 'POST',
         data: {
           matricule: matricule,
           type_voiture: type_voiture
         },
-        success: function(data) {
-          // redirection
-          console.log("Redirection");
-        },
+        success: () => console.log("Redirection and account creation..."),
         error: response => {
           const data = JSON.parse(response.responseText)
           $('#errorMsg').html(data.errors)
@@ -75,15 +103,25 @@
       });
     }
 
+    function go_home() {
+      $.ajax({
+        url: '<?= site_url('login_client/home') ?>',
+        type: 'GET',
+        success: () => console.log("Redirection and account creation..."),
+        error: (err) => console.error(err)
+      });
+    }
+
     $('form').submit(function(e) {
       e.preventDefault();
+      $('#errorMsg').html('');
 
       const matricule = $('input[name=matricule]').val();
       let type_voiture = +$('#type_voiture').val();
       type_voiture = type_voiture === 0 ? undefined : type_voiture;
 
       $.ajax({
-        url: '<?= site_url('loginclient/verify') ?>',
+        url: '<?= site_url('login_client/verify') ?>',
         type: 'POST',
         data: {
           matricule: matricule,
@@ -91,8 +129,11 @@
         },
         success: function(data) {
           if (data.status === 'create') {
-            console.log('Authenticated');
-            create_account(matricule, type_voiture);
+            show_modal()
+          } else if (data.status === 'wrong') {
+            $('#errorMsg').html("Matricule non correspondant au type!")
+          } else if (data.status === 'success') {
+            go_home()
           }
         },
         error: response => {
