@@ -34,5 +34,14 @@ class back_office extends CI_Controller {
 		$data['contents'] = "back_office/service/service";
 		$this->load->view('templates/back_office_template',$data);
 	}
+	/**
+	 * Acces a la page de dvis
+	 */
+	function devis(){
+		// La liste des services
+		$data['devis'] = ['devis1','devis2','devis3'];
+		$data['contents'] = "back_office/devis";
+		$this->load->view('templates/back_office_template',$data);
+	}
 }
 ?>
