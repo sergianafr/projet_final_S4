@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class BackOffice extends CI_Controller {
+class back_office extends CI_Controller {
     /**
      * login page for back-office login 
      */

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?=base_url('assets/css/style.css')?>">
     <title>Login Front-Office</title>
 </head>
 <body>
@@ -15,7 +15,9 @@
         <div class="mb-3 text-center">
             <h2>Authentification client</h2>
         </div>
-        <hr class="p-2">
+        <hr>
+        <p class="text-danger" id="">Message d'erreur</p>
+
             <!-- MATRICULE (matricule)-->
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingMatricule" name="matricule" placeholder="MT2357">
@@ -36,7 +38,7 @@
           <!-- VALIDATION -->
           <button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
           <hr class="">
-          <a href="BackOffice/login">Admin</a>
+          <a href="<?=site_url('back_office/login')?>">Connect as admin</a>
         </form>
       </div>
       <!-- END FORM CONTAINER -->
@@ -48,6 +50,6 @@
     </div>
   </div>
 
-<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="<?=base_url('assets/js/bootstrap.bundle.min.js')?>"></script>
 </body>
 </html>
