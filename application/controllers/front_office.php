@@ -18,11 +18,12 @@ class front_office extends CI_Controller {
 	 * athentification du client
 	 */
 	function auth_client(){
-		$chemin_redirection = "front_office/home";
+		$data['contents'] = "front_office/home";
+		$chemin_redirection = "templates/front_office_template";
 		// Verification du compte
-
+		
 		// Redirection
-		redirect($chemin_redirection);
+		redirect($chemin_redirection,$data);
 	}
 }
 ?>

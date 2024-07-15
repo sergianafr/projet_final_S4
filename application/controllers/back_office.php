@@ -9,5 +9,17 @@ class back_office extends CI_Controller {
 		// Recuperation du template de login
 		$this->load->view('back_office/login');
 	}
+
+	/**
+	 * athentification du admin
+	 */
+	function auth_admin(){
+		$data['contents'] = "back_office/home";
+		$chemin_redirection = "templates/back_office_template";
+		// Verification du compte
+		
+		// Redirection
+		redirect($chemin_redirection,$data);
+	}
 }
 ?>
