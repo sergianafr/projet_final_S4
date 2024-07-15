@@ -3,19 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="<?=base_url('assets/css/style.css')?>">
   <title>Back Office</title>
 </head>
 <body>
-    <div class="wrap">
-    <div id="header">
-        <a href="/"><img src="<?php echo base_url('assets/images/logo.ico'); ?>" alt="logo" /></a>
-        <ul id="navigation">
-            <li><?php echo anchor(base_url(), 'Accueil'); ?></li>
-            <li><a href="<?php echo site_url('Welcome/services'); ?>">services</a></li> 
-            <li><?php echo anchor('contact', 'Contact'); ?></li> 
-        </ul>
-    </div>
-    
   <header>
     <div class="px-3 py-2 bg-dark text-white">
       <div class="container">

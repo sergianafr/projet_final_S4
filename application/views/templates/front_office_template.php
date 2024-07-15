@@ -1,5 +1,5 @@
 <?php
-$this->load->view("templates/front_office/static/header");
+$this->load->view("front_office/static/header");
 $this->load->view($contents);
-$this->load->view("templates/front_office/static/footer");
+$this->load->view("front_office/static/footer");
 ?>  

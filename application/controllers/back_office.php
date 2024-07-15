@@ -14,12 +14,16 @@ class back_office extends CI_Controller {
 	 * athentification du admin
 	 */
 	function auth_admin(){
-		$data['contents'] = "back_office/home";
-		$chemin_redirection = "templates/back_office_template";
+		$chemin_redirection = "back_office/home"; 
 		// Verification du compte
 		
 		// Redirection
-		redirect($chemin_redirection,$data);
+		redirect($chemin_redirection);
+	}
+	function home(){
+		$data['contents'] = "front_office/home";
+		$chemin_view= "templates/front_office_template";
+		$this->load->view($chemin_view,$data);
 	}
 }
 ?>
