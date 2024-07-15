@@ -24,8 +24,24 @@ class front_office extends CI_Controller {
 		// Redirection
 		redirect($chemin_redirection);
 	}
+	/**
+	 * Page d'accueil du front office
+	 */
 	function home(){
+		// Chemin home
 		$data['contents'] = "front_office/home";
+		// Template Front Office
+		$chemin_view= "templates/front_office_template";
+
+		$this->load->view($chemin_view,$data);
+	}
+	/**
+	 * Prendre rendez-vouz
+	*/
+	function rendez_vouz(){
+		// Chemin page rendez-vouz
+		$data['contents'] = "front_office/rendez_vouz";
+		// Template Front Office
 		$chemin_view= "templates/front_office_template";
 
 		$this->load->view($chemin_view,$data);
