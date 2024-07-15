@@ -27,7 +27,7 @@ class login_client extends CI_Controller
         $this->load->view($this->home_client);
     }
 
-    public function home()
+    public function home_account()
     {
         $account = [
             'num_matricule' => $this->input->post('matricule'),
@@ -55,7 +55,7 @@ class login_client extends CI_Controller
             } else if ($result['id_type_vehicule'] != $type_voiture) {
                 echo json_encode(['status' => 'wrong']);
             } else {
-                echo json_encode(['status' => 'success']);
+                echo json_encode(['status'=> 'success']);
             }
         }
     }
