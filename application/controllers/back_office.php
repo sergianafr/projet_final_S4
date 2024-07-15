@@ -21,9 +21,18 @@ class back_office extends CI_Controller {
 		redirect($chemin_redirection);
 	}
 	function home(){
-		$data['contents'] = "front_office/home";
-		$chemin_view= "templates/front_office_template";
+		$data['contents'] = "back_office/home";
+		$chemin_view= "templates/back_office_template";
 		$this->load->view($chemin_view,$data);
+	}
+	/**
+	 * Acces a la page de service
+	 */
+	function service(){
+		// La liste des services
+		$data['services'] = [];
+		$data['contents'] = "back_office/service";
+		$this->load->view('templates/back_office_template',$data);
 	}
 }
 ?>
