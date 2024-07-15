@@ -17,7 +17,7 @@
         <!-- FORM CONTAINER -->
       <div class="col-md-10 mx-auto col-lg-5">
 
-        <form class="p-4 p-md-5 border rounded-3 bg-light">
+        <form class="p-4 p-md-5 border rounded-3 bg-light" method="post" action="<?=site_url('back_office/auth_admin')?>">
         <div class="mb-3 text-center">
             <h2>Authentification admin</h2>
         </div>
