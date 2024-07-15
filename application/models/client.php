@@ -5,6 +5,9 @@ class client extends CI_Model {
     /* Creation compte client qui prend comme argument un tableau associatif 
     ayant comme données le numero matricule et l'id du type de la voiture*/
     public function creer_compte($user){
+        if(!isset($user['id'])){
+            $user['id'] = 'default';
+        }
         $this->db->insert('client', $user);
     }
 
