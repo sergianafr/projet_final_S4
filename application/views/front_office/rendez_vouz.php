@@ -10,6 +10,11 @@
                         <h1>Prendre rendez-vouz</h1>
                     </div>
                     <hr class="p-2">
+                    <!-- Input Date -->
+                    <div class="form-floating mb-3">
+                        <input type="date" name="date_rdv" id="dateInput" class="form-control">
+                        <label for="dateInput">Date de rendez-vouz</label>
+                    </div>
                     <div class="form-floating mb-3">
                         <!-- Input Service -->
                         <select name="service" id="serviceInput" class="form-select" required>
