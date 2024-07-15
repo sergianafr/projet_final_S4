@@ -13,16 +13,5 @@ class front_office extends CI_Controller {
 		// Recuperation du template de login
 		$this->load->view('front_office/login',$data);
 	}
-
-	/**
-	 * athentification du client
-	 */
-	function auth_client(){
-		$chemin_redirection = "front_office/home";
-		// Verification du compte
-
-		// Redirection
-		redirect($chemin_redirection);
-	}
 }
 ?>
