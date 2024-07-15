@@ -15,7 +15,8 @@ class client extends CI_Model {
         $query=$this->db->query('SELECT * FROM client WHERE num_matricule=' . $num_matricule);
         $res=$query->row_array();
 
-        
+        // return null si le client n'existe pas
+        // return un tableau associatif representant chaque colonne de la table et leur donnees respectifs
         return $res;
     }
 
