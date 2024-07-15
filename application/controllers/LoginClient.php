@@ -23,6 +23,11 @@ class LoginClient extends CI_Controller
 
     public function home()
     {
+        $this->client->creer_compte([
+            'num_matricule' => $this->input->post('matricule'),
+            'id_type_vehicule' => $this->input->post('type_voiture')
+        ]);
+        // set data in session
         $this->load->view($this->home_client);
     }
 
@@ -32,29 +37,21 @@ class LoginClient extends CI_Controller
         $this->form_validation->set_rules('type_voiture', 'Type voiture', 'required');
 
         header('Content-Type: application/json');
-        if ($this->form_validation->run() == FALSE) { // Validation des inputs
+        if ($this->form_validation->run() == FALSE) { 
+            // Validation des inputs
             http_response_code(412);
             echo json_encode(['status' => 'error', 'errors' => validation_errors()]);
         } else {
             $matricule = $this->input->post('matricule');
-            $result = $this->client->login($matricule);
+            $id_type_voiture = $this->input->post('type_voiture');
+            $result = $this->client->login($matricule, $id_type_voiture);
 
             if ($result === null) {
-                // Account creation
-                $user = [
-                    'matricule' => $matricule,
-                    'type_voiture' => $this->input->post('type_voiture')
-                ];
+                echo json_encode(['status' => 'create']);
             }
-
-            echo json_encode($matricule);
-            // if ($result) {
-            //     // On success -> send JSON ok to authorize redirection
-            //     echo json_encode(['status' => 'success']);
-            // } else {
-            //     // Else -> send JSON error to ask account creation
-            //     echo json_encode(['status' => 'error', 'errors' => 'account_creation']);
-            // }
+            else {
+                echo json_encode($result);
+            }
         }
     }
 }
