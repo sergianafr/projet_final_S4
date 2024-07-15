@@ -3,10 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class login_client extends CI_Controller
 {
-
     public $form_validation;
     public $client;
-    public $home_client = "front_office/home";
 
     public function __construct()
     {
