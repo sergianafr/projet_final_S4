@@ -9,14 +9,17 @@
   <script src="<?= base_url('assets/js/jquery-3.2.1.min.js') ?>"></script>
   <title>Login Front-Office</title>
 </head>
+<style>
+</style>
+<body class="bg-primary">
+<div class="bg-primary" id="background-level"></div>
+<div class="container col-xl-10 col-xxl-8 px-4 py-5 ">
 
-<body>
-  <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
-      <!-- FORM CONTAINER -->
-      <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-light">
-          <div class="mb-3 text-center">
+        <!-- FORM CONTAINER -->
+      <div class="col-md-10 mx-auto col-lg-10">
+        <form class="p-4 p-md-5 border rounded-3 bg-light" method="post" action="<?=site_url('front_office/auth_client')?>">
+        <div class="mb-3 text-center">
             <h2>Authentification client</h2>
           </div>
           <hr>
@@ -46,11 +49,11 @@
         </form>
       </div>
       <!-- END FORM CONTAINER -->
-      <!-- IMAGE CONTENT  -->
-      <div class="col-lg-7 text-center text-lg-start">
+       <!-- IMAGE CONTENT  -->
+      <!-- <div class="col-lg-7 text-center text-lg-start">
         <h1 class="display-4 fw-bold lh-1 mb-3">Bienvenue dans le GARAGE</h1>
         <p class="col-lg-10 fs-4">Besoin de reparation , maintien , visite de votre vehicule vous etes au bonne endroit</p>
-      </div>
+      </div> -->
     </div>
   </div>
 
