@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class client extends CI_Model {
+class client_model extends CI_Model {
 
     /* Creation compte client qui prend comme argument un tableau associatif 
     ayant comme données le numero matricule et l'id du type de la voiture*/
@@ -22,7 +22,5 @@ class client extends CI_Model {
         // return un tableau associatif representant chaque colonne de la table et leur donnees respectifs
         return $res;
     }
-
-
-
+    
 }
