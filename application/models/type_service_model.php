@@ -14,8 +14,8 @@ class type_service_model extends CI_Model {
 
     // fonction qui recupere tout les elements de type_service
     public function get_all(){
-        $query = $this->db->get();
-        return $query->result();
+        $query = $this->db->get('type_service');
+        return $query->result_array();
     }
 
     

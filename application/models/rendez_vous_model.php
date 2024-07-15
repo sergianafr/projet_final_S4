@@ -8,8 +8,6 @@ class rendez_vous_model extends CI_Model {
         $this->load->model('slot_model');
         $this->load->model('type_service_model');
         $this->load->model('date_reference_model');
-
-
     }
 
     // fonction qui crée un rendez-vous et insere les données dans la table details_rdv
@@ -43,6 +41,12 @@ class rendez_vous_model extends CI_Model {
             'date_heure_fin' => get_date_fin($date_rdv, $type_service['duree'])
         ];
         $this->db->insert('details_rdv', $details_rdv);
+    }
+
+    public function add_date_payement($id_rdv, $date){
+        $this->db->set('date_payement',$date);
+        $this->db->where('id', $id_rdv);
+        $this->db->update('rendez_vous');
     }
 
     

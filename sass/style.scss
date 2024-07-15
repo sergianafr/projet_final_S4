@@ -1,0 +1,17 @@
+// Redifine default variables
+$primary : #515270;
+$secondary : #8d8988;
+
+// Import functions and variables
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+// Create theme variables
+$custom-theme-colors : (
+);
+
+// Combile bootstrap theme and custom theme
+$theme-colors : map-merge($custom-theme-colors,$theme-colors);
+
+// Import bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';
