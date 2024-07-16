@@ -65,6 +65,7 @@ CREATE TABLE details_rdv(
 CREATE VIEW v_devis AS
 SELECT 
     rdv.id as id_rdv,
+    rdv.date_payement as pay_day,
     client.id as id_client,
     client.num_matricule as matricule,
     rdv.debut as date_rdv, 

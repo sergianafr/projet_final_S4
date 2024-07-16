@@ -31,7 +31,7 @@
                                                 <td><?= $value['libelle_service'] ?></td>
                                                 <td><?= $value['libelle_slot'] ?></td>
                                                 <td><?= $value['prix_service'] ?> Ar</td>
-                                                <td>+++</td>
+                                                <td><?= $value['pay_day'] ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
