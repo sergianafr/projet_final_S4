@@ -19,8 +19,9 @@ class login_client extends CI_Controller
             'num_matricule' => $this->input->post('matricule'),
             'id_type_vehicule' => $this->input->post('type_voiture')
         ];
-        $this->client->creer_compte($account);
+        $id_client = $this->client->creer_compte($account);
         $this->session->set_userdata($account);
+        $this->session->set_userdata('id_client', $id_client);
         echo json_encode(['url' => site_url('front_office/home')]);
     }
 
@@ -28,7 +29,8 @@ class login_client extends CI_Controller
     {
         $account = [
             'num_matricule' => $this->input->post('matricule'),
-            'id_type_vehicule' => $this->input->post('type_voiture')
+            'id_type_vehicule' => $this->input->post('type_voiture'),
+            'id_client' => $this->input->post('id_client')
         ];
         $this->session->set_userdata($account);
         echo json_encode(['url' => site_url('front_office/home')]);
@@ -52,7 +54,7 @@ class login_client extends CI_Controller
             } else if ($result['id_type_vehicule'] != $type_voiture) {
                 echo json_encode(['status' => 'wrong']);
             } else {
-                echo json_encode(['status'=> 'success']);
+                echo json_encode(['status'=> 'success', 'id_client' => $result['id']]);
             }
         }
     }
