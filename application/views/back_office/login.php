@@ -29,12 +29,14 @@
           <p class="text-danger" id="errorMsg"></p>
           <!-- LOGIN -->
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" name="login" placeholder="name@example.com">
+            <input type="email" class="form-control" id="floatingInput" name="login" placeholder="name@example.com"
+              value="atlas@gmail.com">
             <label for="floatingInput">Login</label>
           </div>
           <!-- PASSWORD -->
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe" name="pwd">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe" name="pwd"
+              value="atlasss">
             <label for="floatingPassword">Mot de passe</label>
           </div>
           <!-- VALIDATION -->
