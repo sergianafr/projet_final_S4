@@ -69,3 +69,20 @@ if (!function_exists('get_date')) {
         return $formattedDate;
     }
 }
+
+if (!function_exists('valid_format')) {
+    function valid_format($date) {
+        // Regular expression to match the 'yyyy-mm-dd' format
+        $pattern2 = '/^\d{2}-\d{2}-\d{4}$/';
+        $pattern = '/^\d{2}\/\d{2}\/\d{4}$/';
+        
+        // Check if the input date matches the pattern
+        if (preg_match($pattern, $date)) {
+            // Further validation to check if it's a valid date
+            $date_parts = explode('/', $date);
+            return checkdate($date_parts[1], $date_parts[0], $date_parts[2]);
+            
+        }
+        return false;
+    }
+}
