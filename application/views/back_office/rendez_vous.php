@@ -13,7 +13,8 @@ $events = json_encode($rdv, JSON_PRETTY_PRINT);
                 <div class="modal-body">
                     <form action="">
                         <div class="form-floating mb-3">
-                            <select name="client" class="form-select" id="clientInput">
+                            <select name="client" class="form-select" id="client_input">
+                                <option value="">Choisir le matricule</option>
                                 <?php foreach ($clients as $key => $client) { ?>
                                     <option value="<?= $client['id'] ?>"><?= $client['num_matricule'] ?></option>
                                 <?php } ?>
@@ -23,7 +24,7 @@ $events = json_encode($rdv, JSON_PRETTY_PRINT);
 
                         <div class="form-floating mb-3">
                             <!-- Input Service -->
-                            <select name="service" id="serviceInput" class="form-select" required>
+                            <select name="service" id="service_input" class="form-select" required>
                                 <option value="">Choisir un service</option>
                                 <?php foreach ($services as $key => $value) { ?>
                                     <option value="<?= $value['id'] ?>"><?= $value['libelle'] ?></option>
@@ -31,10 +32,12 @@ $events = json_encode($rdv, JSON_PRETTY_PRINT);
                             </select>
                             <label for="serviceInput">Service</label>
                         </div>
-                        
+
                         <!-- Input heure -->
                         <div class="form-floating mb-3">
-                            <input type="time" class="form-control" name="heure" min="<?= $heure_debut ?>" max="<?= $heure_fin ?>" id="heure_input" required>
+                            <input type="time" class="form-control" name="heure" 
+                                min="<?= $heure_debut ?>" max="<?= $heure_fin ?>" 
+                                id="heure_input" required>
                             <label for="heure_input">Heure</label>
                         </div class="mb-3">
                         <input type="submit" id="rdv_button" class="btn btn-primary" value="Enregistrer">
@@ -46,8 +49,23 @@ $events = json_encode($rdv, JSON_PRETTY_PRINT);
     </div>
 </section>
 <script>
+    function submit() {
+        const id_client = +$('#client_input').val();
+        const id_type_service = +$('#service_input').val();
+        const heure = $('#heure_input').val();
+
+        console.log(id_client);
+        console.log(id_type_service);
+        console.log(heure);
+    }
+
+    $('form').submit(function(e) {
+        e.preventDefault();
+        submit();
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
-        var date_calendar = document.getElementById('ModalTitle');
+        var date_calendar = $('#ModalTitle');
         var modalForm = document.getElementById('modalForm');
         var cancel_button = document.getElementById('cancel_button').addEventListener('click', function(e) {
             e.preventDefault();
