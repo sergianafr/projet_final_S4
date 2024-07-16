@@ -5,15 +5,15 @@
         </div>
         <div class="col-lg-5">
             <div class="w-75 mx-auto">
-                <form action="<?=site_url('rendez_vouz/prendre_rendez_vous')?>" method="post">
+                <form action="<?=site_url('rendez_vous/prendre_rendez_vous')?>" method="post">
                     <div class="text-center">
-                        <h1>Prendre rendez-vouz</h1>
+                        <h1>Prendre rendez-vous</h1>
                     </div>
                     <hr class="p-2">
                     <!-- Input Date -->
                     <div class="form-floating mb-3">
                         <input type="date" name="date_rdv" id="dateInput" class="form-control" required>
-                        <label for="dateInput">Date de rendez-vouz</label>
+                        <label for="dateInput">Date de rendez-vous</label>
                     </div>
                     <div class="form-floating mb-3">
                         <!-- Input Service -->
@@ -39,7 +39,7 @@
                     <!-- Validation -->
                     <div class="d-flex justify-content-between">
                         <input type="submit" class="btn btn-primary" value="Fixer le rendez-vous">
-                        <a href="<?=site_url('rendez_vouz/devis_pdf')?>" class="text-white btn btn-secondary">Devis-service.pdf</a>
+                        <a href="<?=site_url('rendez_vous/devis_pdf')?>" class="text-white btn btn-secondary">Devis-service.pdf</a>
                     </div>
                 </form>
             </div>

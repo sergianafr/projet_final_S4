@@ -10,7 +10,7 @@
                     <div class="card-body bg-light">
                     <h3 class="card-title text-dark">Detail devis</h5>
                     <div class="container">
-                            <div class="nav-item d-inline"><h4 class="d-inline"> <p class="text-dark"> DATE RENDEZ-VOUZ : ##/##/##</p></h4>  </div>
+                            <div class="nav-item d-inline"><h4 class="d-inline"> <p class="text-dark"> DATE rendez-vous : ##/##/##</p></h4>  </div>
                             <table class="table">
                                 <thead>
                                     <tr>

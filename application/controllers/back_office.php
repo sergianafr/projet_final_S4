@@ -43,5 +43,21 @@ class back_office extends CI_Controller {
 		$data['contents'] = "back_office/devis";
 		$this->load->view('templates/back_office_template',$data);
 	}
+	/**
+	 * Acces a la page de calendrier de rendez-vous
+	 */
+	function rendez_vous(){
+		// La liste des services
+		// La liste des services
+		$data['services'] = ['Simple','Standard','Complexe','Entretient'];
+		// Heure d'ouverture (min)
+		$data['heure_debut'] = "08:00";
+		// Heure de fermeture (max)
+		$data['heure_fin'] = "18:00";
+		$data['clients'] = ['user1','user2','user3'];
+		$data['rdv'] = ['rdv1','rdv2','rdv3'];
+		$data['contents'] = "back_office/rendez_vous";
+		$this->load->view('templates/back_office_template',$data);
+	}
 }
 ?>
