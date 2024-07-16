@@ -3,8 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class slot_model extends CI_Model {
 
     public function get_slots_disponibles($date_debut, $date_fin) {
-        $query=$this->db->query('call slots_disponibles(?, ?)', $date_debut, $date_fin);
-        $result = $$query->result();
+        $date_fin = strtotime($date_fin);
+        $date_debut = strtotime($date_debut);
+        $query=$this->db->query('call slots_disponibles('.$date_debut.', '.$date_fin.')');
+        $result = $query->result();
         
         $res = [];
         foreach($result as $row){

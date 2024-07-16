@@ -52,8 +52,4 @@ class rendez_vous_model extends CI_Model
         $this->db->where('id', $id_rdv);
         $this->db->update('rendez_vous');
     }
-
-    
-
-    
 }
