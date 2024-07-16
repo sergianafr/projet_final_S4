@@ -1,16 +1,18 @@
-<section class="my-3">
+<section id="hero_section" class="my-3">
     <div class="container">
         <div class="row mb-3">
-            <h1>Liste des services</h1>
+            <h1 class="text-center text-primary">Liste des devis</h1>
+            <hr>
         </div>
-        <div class="row g-4 ">
+        <div class="row">
             <?php foreach( $devis as $key => $value){ ?>
-            <div class="col-sm-12" >
+            <div class="col-sm-12 mb-3" >
                 <div class="card">
-                    <div class="card-body bg-light">
-                    <h3 class="card-title text-dark">Detail devis</h5>
+                    <div class="card-body">
+                        <h3 class="card-title text-dark">Detail devis</h5>
+                    </div>
                     <div class="container">
-                            <div class="nav-item d-inline"><h4 class="d-inline"> <p class="text-dark"> DATE rendez-vous : ##/##/##</p></h4>  </div>
+                        <div class="nav-item d-inline"><h4 class="d-inline"> <p class="text-dark"> DATE rendez-vous : ##/##/##</p></h4>  </div>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -29,21 +31,21 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <form action="<?=site_url("devis/payement")?>" method="post" class="">
+                            <form action="<?=site_url("devis/payement")?>" method="post" class="p-2">
                                 <!-- Input hidden ( id ) -->
                                 <input type="hidden" name="id_devis">
-                                <div class="row">
-                                    <div class="form-floating col">
+                                <div class="d-flex justify-content-end gap-2">
+                                    <div class="form-floating">
                                         <input type="date" name="date_payement" class="form-control" id="payementInput" required>
                                         <label for="payementInput">Date de payement</label>
                                     </div>
-                                    <div class="col">
-                                        <input type="submit" class="btn btn-success h-100" value="Payement">
+                                    <div class="">
+                                        <input type="submit" class="btn btn-primary h-100" value="Payement">
                                     </div>
                                 </div>
                             </form>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
             <?php } ?>

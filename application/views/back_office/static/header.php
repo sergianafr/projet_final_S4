@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="<?=base_url('assets/css/style.css')?>">
   <link rel="stylesheet" href="<?=base_url('assets/font/bootstrap-icons.min.css')?>">
+  <link rel="stylesheet" href="<?=base_url('assets/css/specific.css')?>">
   <title>Back Office</title>
 </head>
 <body>
@@ -31,10 +32,18 @@
       <li class="nav-item">
         <a class="nav-link" href="<?=site_url('back_office/rendez_vous')?>">Rendez-vous</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=site_url('back_office/donnees_csv')?>">Donnees</a>
+      </li>
     </ul>
   </div>
-  <div>
-    <a href="" class="btn btn-outline-secondary">Deconnexion</a>
+  <div class="d-flex gap-2">
+    <div>
+      <a href="<?=site_url('back_office/reset_data')?>" class="btn btn-outline-danger">Supprimer base</a>
+    </div>
+    <div>
+      <a href="" class="btn btn-outline-secondary">Deconnexion</a>
+    </div>
   </div>
   </div>
 </nav>
