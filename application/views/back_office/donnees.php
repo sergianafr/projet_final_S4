@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-6 mx-auto">
             <h2 class="text-center">Importation de donnee</h2>
-            <form action="<?=site_url('back_office/import_files')?>">
+            <form method="POST" action="<?= site_url('back_office/import_files') ?>">
                 <!-- SERVICE (NOT REQUIRED) -->
                 <div class="mb-3">
                     <label for="serviceInput">Donnees des services</label>

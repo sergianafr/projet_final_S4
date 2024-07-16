@@ -7,7 +7,7 @@
             <hr>
         </div>
         <div class="row">
-            <?php foreach( $value as $key => $value){ ?>
+            <?php foreach( $devis as $key => $value ){ ?>
             <div class="col-sm-12 mb-3" >
                 <div class="card p-2">
                     <div class="card-body">

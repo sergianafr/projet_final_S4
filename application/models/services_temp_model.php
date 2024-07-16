@@ -1,13 +1,17 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-class services_temp_model extends CI_Model {
-    public function __construct(){
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class services_temp_model extends CI_Model
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->load->helper('csvimport');
         $this->load->model('CRUD_model');
     }
 
-    public function save_to_temp($filename){
+    public function save_to_temp($filename)
+    {
         // Step 1: Clear existing data
         $errors = [];
         $this->db->empty_table('services_temp');
@@ -15,18 +19,16 @@ class services_temp_model extends CI_Model {
         if (!is_readable($filename)) {
             throw new Exception("File not readable: " . $filename);
         }
+
         $count_row = 1;
         // Step 2: Insert data from csv into temp table
-         // Adjust the file path accordinglyecho "midiiiiitra";
-       
+        // Adjust the file path accordinglyecho "midiiiiitra";
         if (($handle = fopen($filename, 'r')) !== FALSE) {
-            
-            if (($header = fgetcsv($handle, ',')) === FALSE) {
+            if (($header = fgetcsv($handle, 100000, ',')) === FALSE) {
                 throw new Exception("Failed to read the header row from the CSV file.");
             }
 
-            
-            while (($data = fgetcsv($handle,',')) !== FALSE) {
+            while (($data = fgetcsv($handle, 100000,',')) !== FALSE) {
                 $insert = true;
                 $count_row++;
                 if (count($data) == 2) {  // Ensure correct number of columns
@@ -55,9 +57,4 @@ class services_temp_model extends CI_Model {
         fclose($handle);
         return $errors;
     }
-
-   
-    
-
-   
 }

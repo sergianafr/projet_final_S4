@@ -7,7 +7,7 @@ class type_service_model extends CI_Model
     {
         parent::__construct();
         $this->load->model('CRUD_model');
-        $this->load->model('services_temp_model');
+        $this->load->model('services_temp_model', 's_temp');
     }
     // fonction qui recupere une ligne a partir de l'id
     public function get_by_id($id)
@@ -29,7 +29,7 @@ class type_service_model extends CI_Model
 
     // La seule fonction a appeler pour importer un csv dans base 
     public function import_csv($fileName){
-        $this->service_temp_model->save_to_temp($fileName);
+        $this->s_temp->save_to_temp($fileName);
         $query = "INSERT INTO type_service(libelle, duree) SELECT DISTINCT * FROM services_temp";
         $this->db->query($query);
     }

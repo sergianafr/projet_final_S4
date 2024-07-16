@@ -119,7 +119,7 @@ class back_office extends CI_Controller
 	{
 		$this->session->sess_destroy();
 		redirect('back_office/login');
-	}	
+	}
 
 	/**
 	 * Formulaire d'importation de donnees
@@ -134,11 +134,18 @@ class back_office extends CI_Controller
 	 */
 	function import_files()
 	{
-		// Recuperation du chemin des fichiers
+		$service_file = $this->input->post('service_file');
+		$travaux_file = $this->input->post('travaux_file');
 
-		// Recuperation des contenus
 
-		// Tentative d'insertion
+		// Insertion
+		$this->load->model('type_service_model', 'ts');
+		if ($service_file != null) {
+			$this->ts->import_csv($service_file);
+		}
+		if ($travaux_file != null) {
+			$this->ts->import_csv($travaux_file);
+		}
 
 		// Redirection
 		redirect('back_office/donnees_csv');
