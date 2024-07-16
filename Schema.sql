@@ -3,8 +3,8 @@ use Garage;
 
 CREATE TABLE heure_travail(
     id int primary key auto_increment,
-    debut int not null,
-    fin int not null
+    debut time not null,
+    fin time not null
 ) engine=InnoDB;
 
 CREATE TABLE slot(

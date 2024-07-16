@@ -71,11 +71,13 @@ class back_office extends CI_Controller
 
 	function rendez_vous()
 	{
-		$data['services'] = $this->ts->get_all();
+		$data['services'] = $this->crud->get_all('type_service');
+		$data['clients'] = $this->crud->get_all('client');
 
-		$data['heure_debut'] = "08:00";
-		$data['heure_fin'] = "18:00";
-		$data['clients'] = ['user1', 'user2', 'user3'];
+		$heure_travail = $this->crud->get_all('heure_travail')[0];
+		$data['heure_debut'] = $heure_travail['debut'];
+		$data['heure_fin'] = $heure_travail['fin'];
+
 		$data['rdv'] = [
 			// Un crochet correspond a un rdv
 			// title -> le contenu a afficher ( l'heure du rendez vous + service) 
@@ -117,7 +119,7 @@ class back_office extends CI_Controller
 	{
 		$this->session->sess_destroy();
 		redirect('back_office/login');
-	}	
+	}
 
 	/**
 	 * Formulaire d'importation de donnees
@@ -132,14 +134,23 @@ class back_office extends CI_Controller
 	 */
 	function import_files()
 	{
-		// Recuperation du chemin des fichiers
+		$service_file = $this->input->post('service_file');
+		$travaux_file = $this->input->post('travaux_file');
 
-		// Recuperation des contenus
+		$err = []; // Tableau qui va contenir tout les erreurs
 
-		// Tentative d'insertion
+		$this->load->model('type_service_model', 'ts');
+		if ($service_file != "") {
+			$errors = $this->ts->import_csv($service_file);
+			if (count($errors) > 0) $err[] = $errors;
+		}
+		if ($travaux_file != "") {
+			$errors = $this->ts->import_csv($travaux_file);
+			if (count($errors) > 0) $err[] = $errors;
+		}
 
-		// Redirection
-		redirect('back_office/donnees_csv');
+		if (count($err) > 0) var_dump($err);
+		else redirect('back_office/donnees_csv');
 	}
 
 	function slot()
@@ -163,5 +174,13 @@ class back_office extends CI_Controller
 		// Affichage de la view
 		$data['contents'] = 'back_office/slot';
 		$this->load->view('templates/back_office_template', $data);
+	}
+	/**
+	 * Affichage du dashbord
+	 */
+	function dashbord(){
+		// Recuperation des variables necessaires
+		$data['contents'] = "back_office/dashbord";
+		$this->load->view('templates/back_office_template',$data);
 	}
 }
