@@ -60,9 +60,11 @@ class travaux_temp_model extends CI_Model {
                         $errors[] = "date rdv null a la ligne ".$count_row;
                         $insert = false;
                     } else if(!valid_format($trav_data['date_rdv'])){
-                        $errors[] = "date rdv a format incompatible ".$count_row;
+                        $errors[] = "date rdv a format incompatible a jj/mm/aaaa ".$count_row;
                         $insert = false;
-                    }
+                    } 
+                    $trav_data['date_rdv'] = transformDate($trav_data['date_rdv']);
+                    $trav_data['date_paiement'] = transformDate($trav_data['date_paiement']);
                     if($trav_data['heure_rdv'] == null){
                         $errors[] = "heure rdv null a la ligne ".$count_row;
                         $insert = false;

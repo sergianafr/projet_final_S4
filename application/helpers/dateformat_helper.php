@@ -86,3 +86,19 @@ if (!function_exists('valid_format')) {
         return false;
     }
 }
+
+if (!function_exists('transformDate')) {
+function transformDate($date) {
+    // Create a DateTime object from the given date string
+    $dateObject = DateTime::createFromFormat('d/m/Y', $date);
+
+    // Check if the date object was created successfully
+    if ($dateObject) {
+        // Return the date in 'Y-m-d' format
+        return $dateObject->format('Y-m-d');
+    } else {
+        // Handle invalid date format
+        return false;
+    }
+}
+}
