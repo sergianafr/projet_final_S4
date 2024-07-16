@@ -55,9 +55,6 @@ class back_office extends CI_Controller
 		$this->load->view($chemin_view, $data);
 	}
 
-	/**
-	 * Acces a la page de liste des services
-	 */
 	function service()
 	{
 		$data['services'] = $this->ts->get_all();
@@ -65,21 +62,13 @@ class back_office extends CI_Controller
 		$this->load->view('templates/back_office_template', $data);
 	}
 
-	/**
-	 * Acces a la page de liste des devis
-	 */
 	function devis()
 	{
-		// La liste des devis
-		// $data['devis'] = ['devis1', 'devis2', 'devis3'];
 		$data['devis'] = $this->crud->get_all('v_devis');
-
 		$data['contents'] = "back_office/devis";
 		$this->load->view('templates/back_office_template', $data);
 	}
-	/**
-	 * Acces a la page de calendrier de rendez-vous
-	 */
+
 	function rendez_vous()
 	{
 		$data['services'] = $this->ts->get_all();
@@ -114,6 +103,7 @@ class back_office extends CI_Controller
 		$data['contents']= 'back_office/date_reference' ;
 		$this->load->view('templates/back_office_template',$data);
 	}
+
 	/**
 	 * Reinitialisation des donnees de la base
 	 */
