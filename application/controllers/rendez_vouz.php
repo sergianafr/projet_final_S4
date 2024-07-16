@@ -38,9 +38,14 @@ class rendez_vouz extends CI_Controller
             $date_fin = get_date_fin($heure_debut, $type_service['duree']);
             $date_debut = get_date($date_rdv, $heure_debut);
 
-            echo json_encode(['debut' => $date_debut, 'fin' => $date_fin ]);
+            echo json_encode(['debut' => $date_debut, 'fin' => $date_fin]);
 
-            // $slot_dispo = $this->slot->get_slots_disponibles($date_debut, $date_fin);
+            $slot_dispo = $this->slot->get_slots_disponibles($date_debut, $date_fin);
+            if (count($slot_dispo) > 0) {
+                echo json_encode(['status' => 'success']);
+            } else {
+                echo json_encode(['status' => 'impossible']);
+            }
 
             // echo json_encode(['slot' => $slot_dispo]);
             // TODO
