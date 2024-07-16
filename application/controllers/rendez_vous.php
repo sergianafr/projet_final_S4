@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * Controller pour les actions sur le rendez-vous
  */
-class rendez_vous extends CI_Controller
+class Rendez_vous extends CI_Controller
 {
     public $form_validation;
     public $slot;

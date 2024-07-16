@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class login_client extends CI_Controller
+class Login_client extends CI_Controller
 {
     public $form_validation;
     public $client;

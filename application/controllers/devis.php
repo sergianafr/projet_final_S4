@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class devis extends CI_Controller
+class Devis extends CI_Controller
 {
 
     public $rdv;

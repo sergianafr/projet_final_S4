@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class back_office extends CI_Controller
+class Back_office extends CI_Controller
 {
 	public $form_validation;
 	public $admin;
