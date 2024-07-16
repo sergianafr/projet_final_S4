@@ -10,12 +10,12 @@ class type_vehicule_model extends CI_Model {
     
     public function import_csv($fileName){
         
-        $query = "INSERT INTO type_vehicule(libelle) SELECT DISTINCT type_voiture FROM travaux_temp";
+        $query = "INSERT INTO garage_type_vehicule(libelle) SELECT DISTINCT type_voiture FROM garage_travaux_temp";
         $this->db->query($query);
     }
 
     public function get_by_name($name){
-        $query = $this->db->query('SELECT * FROM type_vehicule WHERE libelle=?', $name);
+        $query = $this->db->query('SELECT * FROM garage_type_vehicule WHERE libelle=?', $name);
         $res = $query->row_array();
 
         return $res;

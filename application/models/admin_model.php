@@ -5,7 +5,7 @@ class admin_model extends CI_Model
 {
     public function existe_login($pseudo)
     {
-        $query = $this->db->query("SELECT * FROM admin WHERE pseudo = '$pseudo'");
+        $query = $this->db->query("SELECT * FROM garage_admin WHERE pseudo = '$pseudo'");
         $res = $query->row_array();
 
         // return null si l'user n'existe pas
@@ -15,7 +15,7 @@ class admin_model extends CI_Model
 
     public function ok_login($pseudo, $password)
     {
-        $query = $this->db->query("SELECT * FROM admin WHERE pseudo = '$pseudo' AND mdp = '$password' ");
+        $query = $this->db->query("SELECT * FROM garage_admin WHERE pseudo = '$pseudo' AND mdp = '$password' ");
         $res = $query->row_array();
 
         // return null si l'user n'existe pas

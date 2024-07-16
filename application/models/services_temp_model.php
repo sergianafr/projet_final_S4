@@ -10,7 +10,7 @@ class services_temp_model extends CI_Model {
     public function save_to_temp($filename){
         // Step 1: Clear existing data
         $errors = [];
-        $this->db->empty_table('services_temp');
+        $this->db->empty_table('garage_services_temp');
 
         if (!is_readable($filename)) {
             throw new Exception("File not readable: " . $filename);
@@ -47,7 +47,7 @@ class services_temp_model extends CI_Model {
                         $insert = false;
                     }
                     if($insert){
-                        $this->db->insert('services_temp', $serv_data);
+                        $this->db->insert('garage_services_temp', $serv_data);
                     }
                 }
             }

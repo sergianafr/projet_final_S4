@@ -12,7 +12,7 @@ class type_service_model extends CI_Model
     // fonction qui recupere une ligne a partir de l'id
     public function get_by_id($id)
     {
-        $query = $this->db->query('SELECT * FROM type_service WHERE id=?', $id);
+        $query = $this->db->query('SELECT * FROM garage_type_service WHERE id=?', $id);
         $res = $query->row_array();
 
         // retourne un tableau associatif de type 
@@ -23,19 +23,19 @@ class type_service_model extends CI_Model
     // fonction qui recupere tout les elements de type_service
     public function get_all()
     {
-        $query = $this->db->get('type_service');
+        $query = $this->db->get('garage_type_service');
         return $query->result_array();
     }
 
     // La seule fonction a appeler pour importer un csv dans base 
     public function import_csv($fileName){
         $this->service_temp_model->save_to_temp($fileName);
-        $query = "INSERT INTO type_service(libelle, duree) SELECT DISTINCT * FROM services_temp";
+        $query = "INSERT INTO garage_type_service(libelle, duree) SELECT DISTINCT * FROM garage_services_temp";
         $this->db->query($query);
     }
     
     public function update($id, $new_data){
         $this->db->where('id', $id);
-        $this->db->update('type_service', $new_data);
+        $this->db->update('garage_type_service', $new_data);
     }
 }
