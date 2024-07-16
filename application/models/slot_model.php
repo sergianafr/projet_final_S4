@@ -5,7 +5,7 @@ class slot_model extends CI_Model
 
     public function get_slots_disponibles($date_debut, $date_fin)
     {
-        $my = "call slots_disponibles('$date_debut', '$date_fin')";
+        $my = "call garage_slots_disponibles('$date_debut', '$date_fin')";
         $query=$this->db->query($my);
         $result = $query->result();
 

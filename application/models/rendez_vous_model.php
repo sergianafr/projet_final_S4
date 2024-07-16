@@ -32,7 +32,7 @@ class rendez_vous_model extends CI_Model
         $type_service = $this->type_service_model->get_by_id($id_type_service);
         $rdv['devis'] = $this->mts->get_montant_actu($id_type_service);
 
-        $this->db->insert('rendez_vous', $rdv);
+        $this->db->insert('garage_rendez_vous', $rdv);
 
         // dernier id de rdv inseré
         $id_RDV = $this->db->insert_id();
@@ -45,7 +45,7 @@ class rendez_vous_model extends CI_Model
             'duree' => $type_service['duree'],
             'date_heure_fin' => get_date_fin($date_rdv, $type_service['duree'])
         ];
-        $this->db->insert('details_rdv', $details_rdv);
+        $this->db->insert('garage_details_rdv', $details_rdv);
     }
 
     public function import_csv(){
