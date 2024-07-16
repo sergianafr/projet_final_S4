@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = '/ETU00234/t/projet_final_s4/';
+$config['base_url'] = 'http://localhost/projet_final_s4/';
 
 /*
 |--------------------------------------------------------------------------
