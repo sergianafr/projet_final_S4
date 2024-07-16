@@ -109,10 +109,11 @@
       });
     }
 
-    function go_home() {
+    function go_home(id_client) {
       $.ajax({
         url: '<?= site_url('login_client/home') ?>',
-        type: 'GET',
+        type: 'POST',
+        data: { id_client: id_client },
         success: (response) => {
           const data = JSON.parse(response);
           window.location.href = data.url;
@@ -142,7 +143,7 @@
           } else if (data.status === 'wrong') {
             $('#errorMsg').html("Matricule non correspondant au type!")
           } else if (data.status === 'success') {
-            go_home()
+            go_home(data.id_client)
           }
         },
         error: response => {

@@ -126,3 +126,10 @@ or (date_heure_debut >= '2024-07-16 08:00:00' AND date_heure_fin <= '2024-07-16 
 SELECT * FROM details_rdv WHERE idSlot = 1 ORDER BY id DESC LIMIT 2 ;
 
 SELECT timediff(date_heure_debut,date_heure_fin) from details_rdv;
+(default, 1, '2024-07-07 11:00:00', '2024-07-08 08:00:00', 1, '8:00:00');
+
+INSERT INTO date_reference VALUES
+(default, '2024-01-01');
+
+INSERT INTO admin VALUES
+(default, 'asta@gmail.com', 'atlasss');
