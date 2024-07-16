@@ -1,4 +1,5 @@
 <?php
+$id_service = 0;
 $nom_service = "";
 $prix_service = 0;
 $duree_service = 1;

@@ -30,12 +30,23 @@ class service extends CI_Controller
      */
     function insertion()
     {
-        // Recuperation des donneess
+        $this->form_validation->set_rules('libelle', 'Libelle', 'required');
+        $this->form_validation->set_rules('duree', 'Duree', 'required');
+        $this->form_validation->set_rules('prix', 'Prix', 'required');
 
-        // Insertion
-
-        // Redirection vers la liste des services
-        redirect('back_office/service');
+        header('Content-Type: application/json');
+        if ($this->form_validation->run() == FALSE) {
+            http_response_code(412);
+            echo json_encode(['status' => 'error', 'errors' => validation_errors()]);
+        } else {
+            $new = [
+                'libelle' => $this->input->post('libelle'),
+                'duree' => $this->input->post('duree'),
+                'prix' => $this->input->post('prix'),
+            ];
+            $this->crud->insert($new, 'type_service');  
+        }
+        redirect('back_office/service/service?msg=Ajout reussi!');
     }
 
     /**
@@ -78,8 +89,6 @@ class service extends CI_Controller
     {
         $id_service = intval($this->input->get('id_service'));
         $this->crud->delete($id_service, 'type_service');
-
-        // Redirection vers la liste des services
         redirect('back_office/service/service?msg=Suppression reussi!');
     }
 }
