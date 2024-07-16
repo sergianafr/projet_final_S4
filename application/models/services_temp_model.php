@@ -32,6 +32,7 @@ class services_temp_model extends CI_Model {
                         'service' => $data[0],  // Adjust the indexes according to the structure of your csv file
                         'duree' => $data[1]
                     );
+                    
                     $this->db->insert('services_temp', $serv_data);
                 }
             }
