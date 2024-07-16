@@ -29,13 +29,13 @@ class slot_model extends CI_Model
         if (!isset($slot['id'])) {
             $slot['id'] = 'default';
         }
-        $this->db->insert('slot', $slot);
+        $this->db->insert('garage_slot', $slot);
     }
 
     public function delete($id)
     {
         $this->db->where('id', $id);
-        $this->db->delete('slot');
+        $this->db->delete('garage_slot');
         return $this->db->affected_rows();
     }
 
@@ -43,6 +43,6 @@ class slot_model extends CI_Model
     public function update($id, $new_data)
     {
         $this->db->where('id', $id);
-        $this->db->update('slot', $new_data);
+        $this->db->update('garage_slot', $new_data);
     }
 }

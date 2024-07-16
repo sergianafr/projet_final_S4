@@ -35,8 +35,8 @@
             <select id="type_voiture" name="type_voiture" id="floatingType" class="form-select">
               <option value="">Choisir un type de voiture</option>
               <?php foreach ($types_voiture as $key => $type) { ?>
-                <option value="<?= $key+1 ?>">
-                  <?= $type ?>
+                <option value="<?= $type['id'] ?>">
+                  <?= $type['libelle'] ?>
                 </option>
               <?php } ?>
             </select>

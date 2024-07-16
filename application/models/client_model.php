@@ -18,7 +18,7 @@ class client_model extends CI_Model {
     public function login($num_matricule){
         $num_matricule = $this->db->escape($num_matricule);
         // $num_matricule = "'".$num_matricule."'";
-        $query=$this->db->query('SELECT * FROM client WHERE num_matricule = ' . $num_matricule);
+        $query=$this->db->query('SELECT * FROM garage_client WHERE num_matricule = ' . $num_matricule);
         $res=$query->row_array();
 
         // return null si le client n'existe pas
@@ -28,7 +28,7 @@ class client_model extends CI_Model {
 
     public function import_csv(){
         
-        $query = "INSERT INTO client(num_matricule, id_type_vehicule) SELECT DISTINCT voiture, type_vehicule.id as id from travaux_temp join type_vehicule on type_vehicule.libelle = travaux_temp.type_voiture";
+        $query = "INSERT INTO garage_client(num_matricule, id_type_vehicule) SELECT DISTINCT voiture, type_vehicule.id as id from garage_travaux_temp join garage_type_vehicule on garage_type_vehicule.libelle = garage_travaux_temp.type_voiture";
         $this->db->query($query);
     }
 }
