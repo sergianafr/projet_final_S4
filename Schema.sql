@@ -83,6 +83,11 @@ CREATE TABLE travaux_temp(
     date_paiement date
 );
 
+
+SELECT DISTINCT type_service.id,  montant from travaux_temp join type_service on type_service.libelle = travaux_temp.type_service;
+SELECT DISTINCT voiture, type_vehicule.id as id from travaux_temp join type_vehicule on type_vehicule.libelle = travaux_temp.type_voiture;
+
+
 CREATE VIEW v_devis AS
 SELECT 
     rdv.id as id_rdv,
@@ -118,3 +123,11 @@ BEGIN
 END //
 
 DELIMITER ;
+
+SELECT * FROM slot 
+    WHERE id not in (
+        SELECT idSlot FROM details_rdv 
+        WHERE ((date_heure_debut <= dateheuredebut_donnee AND date_heure_fin >= dateheuredebut_donnee) 
+        or (date_heure_debut <= dateheurefin_donnee AND date_heure_fin >= dateheurefin_donnee) 
+        or (date_heure_debut >= dateheuredebut_donnee AND date_heure_fin <= dateheurefin_donnee))
+    );

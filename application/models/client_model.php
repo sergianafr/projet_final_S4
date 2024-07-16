@@ -25,4 +25,10 @@ class client_model extends CI_Model {
         // return un tableau associatif representant chaque colonne de la table et leur donnees respectifs
         return $res;
     }
+
+    public function import_csv(){
+        
+        $query = "INSERT INTO client(num_matricule, id_type_vehicule) SELECT DISTINCT voiture, type_vehicule.id as id from travaux_temp join type_vehicule on type_vehicule.libelle = travaux_temp.type_voiture";
+        $this->db->query($query);
+    }
 }
