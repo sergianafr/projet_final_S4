@@ -13,70 +13,38 @@
                         <h3 class="card-title text-dark">Detail devis</h5>
                     </div>
                     <div class="container">
-                        <div class="nav-item d-inline"><h4 class="d-inline"> <p class="text-dark"> DATE rendez-vous : ##/##/##</p></h4>  </div>
+                        <div class="nav-item d-inline"><h4 class="d-inline"> <p class="text-dark"> au : <?= $value['date_rdv'] ?></p></h4>  </div>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th> Matricule</th>
+                                        <th>Matricule</th>
                                         <th>Service</th>
                                         <th>Slot</th>
                                         <th>Prix</th>
+                                        <th>Date Payement</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>MTXXXX</td>
-                                        <td>Standard</td>
-                                        <td>A</td>
-                                        <td>PRIX</td>
+                                        <td><?= $value['matricule'] ?></td>
+                                        <td><?= $value['libelle_service'] ?></td>
+                                        <td><?= $value['libelle_slot'] ?></td>
+                                        <td><?= $value['prix_service'] ?> Ar</td>
+                                        <td><?= $value['pay_day'] ?></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <form action="<?=site_url("devis/payement")?>" method="post" class="p-2">
-                                <!-- Input hidden ( id ) -->
-                                <input type="hidden" name="id_devis">
-                                <div class="d-flex justify-content-end gap-2">
-                                    <div class="form-floating">
-                                        <input type="date" name="date_payement" class="form-control" id="payementInput" required>
+                            <form data-key="<?= $key ?>" action="<?= site_url("devis/payement") ?>" method="POST" class="p-2">
+                            <div class="d-flex justify-content-end gap-2">
+                                <div class="form-floating">
+                                        <input type="hidden" id="id_rdv_<?= $key ?>" name="id_rdv" value="<?= $value['id_rdv'] ?>">
+                                        <input type="date" id="pay_day_<?= $key ?>" name="pay_day" class="form-control" id="payementInput" required>
                                         <label for="payementInput">Date de payement</label>
                                     </div>
                                     <div class="">
                                         <input type="submit" class="btn btn-primary h-100" value="Payement">
                                     </div>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Matricule</th>
-                                                <th>Service</th>
-                                                <th>Slot</th>
-                                                <th>Prix</th>
-                                                <th>Date Payement</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><?= $value['matricule'] ?></td>
-                                                <td><?= $value['libelle_service'] ?></td>
-                                                <td><?= $value['libelle_slot'] ?></td>
-                                                <td><?= $value['prix_service'] ?> Ar</td>
-                                                <td><?= $value['pay_day'] ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <form data-key="<?= $key ?>" action="<?= site_url("devis/payement") ?>" method="POST" class="">
-                                        <!-- Input hidden ( id ) -->
-                                        <input type="hidden" name="id_devis">
-                                        <div class="row">
-                                            <div class="form-floating col">
-                                                <input type="hidden" id="id_rdv_<?= $key ?>" name="id_rdv" value="<?= $value['id_rdv'] ?>">
-                                                <input type="date" id="pay_day_<?= $key ?>" name="pay_day" class="form-control" id="payementInput" required>
-                                                <label for="payementInput">Date de payement</label>
-                                            </div>
-                                            <div class="col">
-                                                <input type="submit" class="btn btn-success h-100" value="Payement">
-                                            </div>
-                                        </div>
-
+                                </div>
                             </form>
                         </div>
                     </div>
