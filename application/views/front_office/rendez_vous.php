@@ -10,6 +10,8 @@
                         <h1>Prendre rendez-vous</h1>
                     </div>
                     <hr class="p-2">
+                    <p class="text-danger" id="errorMsg"></p>
+
                     <!-- Input Date -->
                     <div class="form-floating mb-3">
                         <input type="date" name="date_rdv" id="date_input" class="form-control" required>
@@ -40,28 +42,47 @@
         </div>
     </div>
     <script>
-        $('form').submit(function(e) {
-            e.preventDefault();
-            console.log("You defined a rdv");
-            const date_rdv = $('#date_input').val();
-            const heure_rdv = $('#heure_input').val();
-            const service = $('#service_input').val()
-
-            console.log(date_rdv)
-            console.log(heure_rdv)
-            console.log(service)
-
+        function save_rdv(id_client, date_rdv, date_prise_rdv, id_type_service, id_slot) {
             $.ajax({
-                url: '<?= site_url('rendez_vouz/verify') ?>',
+                url: '<?= site_url('rendez_vous/save_rdv') ?>',
                 type: 'POST',
                 data: {
-                    date_rdv : date_rdv,
-                    heure_rdv : heure_rdv,
-                    service : service
+                    id_client: id_client,
+                    date_rdv: date_rdv,
+                    date_prise_rdv: date_prise_rdv,
+                    id_type_service: id_type_service,
+                    id_slot: id_slot
                 },
                 success: (response) => {
                     const data = JSON.parse(response);
-                    console.log(data);
+                    window.location.href = data.url;
+                },
+                error: response => {
+                    const data = JSON.parse(response.responseText)
+                    $('#errorMsg').html(data.errors)
+                }
+            });
+        }
+
+        $('form').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '<?= site_url('rendez_vous/verify') ?>',
+                type: 'POST',
+                data: {
+                    date_rdv: $('#date_input').val(),
+                    heure_rdv: $('#heure_input').val(),
+                    service: $('#service_input').val()
+                },
+                success: (data) => {
+                    if (data.status === 'impossible') {
+                        $('#errorMsg').html('Aucun slot libre pour cet heure de ce jour');
+                    } else if (data.status === 'success') {
+                        save_rdv(
+                            data.id_client, data.date_rdv, data.date_prise_rdv,
+                            data.id_type_service, data.id_slot
+                        );
+                    }
                 },
                 error: (err) => console.error(err)
             });

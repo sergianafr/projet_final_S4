@@ -10,6 +10,8 @@ class client_model extends CI_Model {
             $user['id'] = 'default';
         }
         $this->db->insert('client', $user);
+
+        return $this->db->insert_id();
     }
 
     // recuperation client
