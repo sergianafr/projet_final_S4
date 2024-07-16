@@ -5,11 +5,14 @@ class back_office extends CI_Controller
 {
 	public $form_validation;
 	public $admin;
+	public $ts;
+	public $crud;
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('admin_model', 'admin');
+		$this->load->model("type_service_model", "ts");
 		$this->load->library('form_validation');
 	}
 
@@ -52,21 +55,21 @@ class back_office extends CI_Controller
 	}
 
 	/**
-	 * Acces a la page de service
+	 * Acces a la page de liste des services
 	 */
 	function service()
 	{
-		// La liste des services
-		$data['services'] = ['servic1', 'servic2', 'servic3'];
+		$data['services'] = $this->ts->get_all();
 		$data['contents'] = "back_office/service/service";
 		$this->load->view('templates/back_office_template', $data);
 	}
+
 	/**
-	 * Acces a la page de dvis
+	 * Acces a la page de liste des devis
 	 */
 	function devis()
 	{
-		// La liste des services
+		// La liste des devis
 		$data['devis'] = ['devis1', 'devis2', 'devis3'];
 		$data['contents'] = "back_office/devis";
 		$this->load->view('templates/back_office_template', $data);
@@ -76,7 +79,6 @@ class back_office extends CI_Controller
 	 */
 	function rendez_vous()
 	{
-		$this->load->model("type_service_model", "ts");
 		$data['services'] = $this->ts->get_all();
 
 		$data['heure_debut'] = "08:00";
