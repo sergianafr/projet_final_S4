@@ -17,6 +17,17 @@ class rendez_vous extends CI_Controller {
         redirect('front_office/rendez_vous');
     }
     /**
+     * Utiliser par le backoffice pour ajouter un rdv dans le calendrier
+     */
+    function ajouter_rendez_vous(){
+        // Recuperation des variables
+
+        // Logique de prise de rendez-vous
+
+        // Redirection vers le calendrier
+        redirect('back_office/rendez_vous');
+    }
+    /**
      * Recuperation de pdf du devis des services
      */
     function  devis_pdf(){

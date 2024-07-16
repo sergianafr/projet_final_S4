@@ -55,7 +55,19 @@ class back_office extends CI_Controller {
 		// Heure de fermeture (max)
 		$data['heure_fin'] = "18:00";
 		$data['clients'] = ['user1','user2','user3'];
-		$data['rdv'] = ['rdv1','rdv2','rdv3'];
+		$data['rdv'] = [
+			// Un crochet correspond a un rdv
+			// title -> le contenu a afficher ( l'heure du rendez vous + service) 
+			// start -> le jour de rendez-vous
+			[
+				'title' => "08h - Standard",
+				'start' => "2024-07-16"
+			],
+			[
+				'title' => "09h - Meeting",
+				'start' => "2024-07-17"
+			]
+		];
 		$data['contents'] = "back_office/rendez_vous";
 		$this->load->view('templates/back_office_template',$data);
 	}
@@ -69,6 +81,15 @@ class back_office extends CI_Controller {
 		// Affichage de la view
 		$data['contents']= 'back_office/date_reference' ;
 		$this->load->view('templates/back_office_template',$data);
+	}
+	/**
+	 * Reinitialisation des donnees de la base
+	 */
+	function reset_data(){
+		// Suppression des donnees de la base
+
+		// Retour a la page d'accueil ou dashbord
+		redirect('back_office/home');
 	}
 }
 ?>

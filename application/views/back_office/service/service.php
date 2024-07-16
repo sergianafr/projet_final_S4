@@ -1,18 +1,18 @@
 <section id="hero_section" class="my-3">
     <div class="container">
         <div class="row mb-3">
-            <h1>Liste des services</h1>
+            <h2>Liste des services</h2>
         </div>
         <div class="row g-4 ">
             <?php foreach( $services as $key => $value){ ?>
             <div class="col-sm-12 col-lg-4" >
                 <div class="card">
                     <div class="card-body bg-light">
-                    <h3 class="card-title text-dark">Nom service</h5>
+                    <h4 class="card-title text-dark">Nom service</h4>
                     <div class="container">
                         <ul class="navbar-nav">
-                            <li class="nav-item d-inline"><h4 class="d-inline"> <p class="text-dark"> Duree : 2h30</p></h4>  </li>
-                            <li class="nav-item"><h4 class="d-inline"><p class="text-dark"> Prix  : 300.000Ar</p></h4></li>
+                            <li class="nav-item d-inline"><p class="text-dark"> Duree : 2h30</p>  </li>
+                            <li class="nav-item"><p class="text-dark"> Prix  : 300.000Ar</p></li>
                         </ul>
                     </div>
                     <a href="<?=site_url("service/modifier?id_service=1")?>" class="btn btn-primary">Modifier</a>

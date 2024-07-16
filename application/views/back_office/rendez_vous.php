@@ -1,3 +1,6 @@
+<?php
+    $events = json_encode($rdv,JSON_PRETTY_PRINT);
+?>
 <section id="hero_section" class="container my-3">
     <div id="calendar"></div>
     <!-- Modal -->
@@ -9,7 +12,7 @@
         </div>
         <div class="modal-body">
             <form action="">
-                <div class="form-floating">
+                <div class="form-floating mb-3">
                     <select name="client" class="form-select" id="clientInput">
                         <?php foreach($clients as $key => $client) { ?>
                             <option value="<?=$key?>"><?=$client?></option>
@@ -38,12 +41,9 @@
                         >
                         <label for="heure_input">Heure</label>
                     </div class="mb-3">
-
+                    <input type="submit" id="rdv_button" class="btn btn-primary"  value="Enregistrer">
+                    <button type="button"  id="cancel_button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
             </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button"   id="rdv_button" class="btn btn-primary">Enregister</button>
-            <button type="button"   id="cancel_button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
         </div>
         </div>
     </div>
@@ -58,14 +58,20 @@
         modalForm.classList.remove('show');
         modalForm.classList.replace('d-block','d-none')
     });
-    var rdv_button = document.getElementById('rdv_button').addEventListener('click',function(e){
-        e.preventDefault();
-    });
     // Recuperation du calendrierDOM
     var calendarEl = document.getElementById('calendar');
     // Creation d'un objet calendrier
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth'
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+        left: 'prevYear,prev,next,nextYear today',
+        center: 'title',
+        right: 'dayGridMonth,dayGridWeek,dayGridDay'
+      },
+      navLinks: true, // can click day/week names to navigate views
+      editable: true,
+      dayMaxEvents: true, // allow "more" link when too many events
+      events : <?=$events?>
     });
     // Event on click
     calendar.on('dateClick', function(info) {

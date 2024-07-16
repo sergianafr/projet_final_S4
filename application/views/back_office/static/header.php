@@ -34,8 +34,13 @@
       </li>
     </ul>
   </div>
-  <div>
-    <a href="" class="btn btn-outline-secondary">Deconnexion</a>
+  <div class="d-flex gap-2">
+    <div>
+      <a href="<?=site_url('back_office/reset_data')?>" class="btn btn-outline-danger">Supprimer base</a>
+    </div>
+    <div>
+      <a href="" class="btn btn-outline-secondary">Deconnexion</a>
+    </div>
   </div>
   </div>
 </nav>
