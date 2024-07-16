@@ -71,11 +71,13 @@ class back_office extends CI_Controller
 
 	function rendez_vous()
 	{
-		$data['services'] = $this->ts->get_all();
+		$data['services'] = $this->crud->get_all('type_service');
+		$data['clients'] = $this->crud->get_all('client');
 
-		$data['heure_debut'] = "08:00";
-		$data['heure_fin'] = "18:00";
-		$data['clients'] = ['user1', 'user2', 'user3'];
+		$heure_travail = $this->crud->get_all('heure_travail')[0];
+		$data['heure_debut'] = $heure_travail['debut'];
+		$data['heure_fin'] = $heure_travail['fin'];
+
 		$data['rdv'] = [
 			// Un crochet correspond a un rdv
 			// title -> le contenu a afficher ( l'heure du rendez vous + service) 
