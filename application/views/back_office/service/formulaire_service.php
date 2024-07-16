@@ -16,7 +16,7 @@ if ($service != null) {
 ?>
 
 
-<section class="container">
+<section id="hero_section" class="container">
     <h1>Formulaire de service</h1>
     <div class="row">
         <div class="col w-50 mx-auto">

@@ -1,4 +1,4 @@
-<section class="container my-4">
+<section id="hero_section" class="container my-4">
     <div class="row">
         <div class="col-lg-7">
             <img class="img-fluid" src="<?=base_url('assets/images/pexels-maltelu-2244746.jpg')?>" alt=".matlelu">

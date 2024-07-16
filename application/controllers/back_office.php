@@ -64,7 +64,7 @@ class back_office extends CI_Controller {
 	 */
 	function date_reference(){
 		// La date de reference actuelle
-		$data['date_actuelle'] = new DateTime();
+		$data['date_actuelle'] = "7/16/2024";
 
 		// Affichage de la view
 		$data['contents']= 'back_office/date_reference' ;

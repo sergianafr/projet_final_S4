@@ -1,4 +1,4 @@
-<section class="container my-3">
+<section id="hero_section" class="container my-3">
     <div id="calendar"></div>
     <!-- Modal -->
     <div class="modal fade d-none" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle">

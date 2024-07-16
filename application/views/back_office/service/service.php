@@ -1,4 +1,4 @@
-<section class="my-3">
+<section id="hero_section" class="my-3">
     <div class="container">
         <div class="row mb-3">
             <h1>Liste des services</h1>
