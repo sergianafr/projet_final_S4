@@ -21,3 +21,9 @@ INSERT INTO rendez_vous VALUES
 (default, 1, '2024-07-07 11:00:00', '2024-07-02', 3, 1,  800000, default);
 INSERT INTO details_rdv VALUES
 (default, 1, '2024-07-07 11:00:00', '2024-07-08 08:00:00', 1, '8:00:00');
+
+INSERT INTO date_reference VALUES
+(default, '2024-01-01');
+
+INSERT INTO admin VALUES
+(default, 'asta@gmail.com', 'atlasss');

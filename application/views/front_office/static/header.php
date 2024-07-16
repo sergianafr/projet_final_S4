@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="<?=base_url('assets/css/style.css')?>">
   <link rel="stylesheet" href="<?=base_url('assets/font/bootstrap-icons.min.css')?>">
   <link rel="stylesheet" href="<?=base_url('assets/css/specific.css')?>">
+  <script src="<?= base_url('assets/js/jquery-3.2.1.min.js') ?>"></script>
   <title>Front Office</title>
 </head>
 <body>
