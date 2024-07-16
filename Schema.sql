@@ -118,3 +118,14 @@ BEGIN
 END //
 
 DELIMITER ;
+
+CREATE VIEW v_impayer AS
+SELECT *
+FROM rendez_vous
+join type_vehicule on 
+WHERE date_payement IS NULL;
+
+CREATE VIEW v_payer AS
+SELECT *
+FROM rendez_vous
+WHERE date_payement IS NOT NULL;

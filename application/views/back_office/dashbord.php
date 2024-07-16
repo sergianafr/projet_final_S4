@@ -1,39 +1,76 @@
 
 <section id="hero_section">
-    <!-- CHIFFRE D'AFFAIRE -->
-     <div id="chiffre_affaire"></div>
+    <div class="row">
+        <div class="col">
+            <div>
+                <form action="">
+                    <div class="group-form">
+                        <!-- TYPE DE VOITURE -->
+                        <select name="" id="">
+                            
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div style="width: 600px; height: 400px;">
+             <canvas id="chiffre_affaire"></canvas>
+            </div>
+        </div>
+        <!-- CHIFFRE D'AFFAIRE -->
+        <div class="col"></div>
+    </div>
+
 </section>
 <script>
-    document.addEventListener('load',function(e){
-            /**
-             * CHIFFRE D'AFFAIRE
-             */
-            // data
+   document.addEventListener('DOMContentLoaded', (event) => {
+            const cf_dom = document.getElementById('chiffre_affaire').getContext('2d');
             const data = {
-                labels: [
-                'Red',
-                'Blue',
-                'Yellow'
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [300, 50, 100],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 4
-            }]
-        };
-        // config
-        const config_chiffre_affaire = {
-            type: 'doughnut',
-            data: data,
-        };
-        const chiffre_affaire_chart  = new Chart(
-            document.getElementById('chiffre_affaire'),
-            config_chiffre_affaire
-        );
-    })
+                labels: ['Payer', 'Impayer'],
+                datasets: [{
+                    data: [<?=$cf['payer']?>,<?=$cf['impayer']?>],
+                    backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)'],
+                    hoverOffset: 4
+                }]
+            };
+            // Config
+            const config = {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            enabled: true
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 10,
+                            top: 10,
+                            bottom: 10
+                        }
+                    },
+                    elements: {
+                        arc: {
+                            borderWidth: 0,
+                            radius: '70%'  // Set the radius of the pie chart
+                        }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const chart = elements[0]._chart;
+                            const index = elements[0]._index;
+                            const label = chart.data.labels[index];
+                            const value = chart.data.datasets[0].data[index];
+                            alert(`Label: ${label}\nValue: ${value}`);
+                        }
+                    }
+                }
+            };
+            new Chart(cf_dom, config);
+        });
 </script>

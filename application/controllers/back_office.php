@@ -170,6 +170,23 @@ class back_office extends CI_Controller
 	 * Affichage du dashbord
 	 */
 	function dashbord(){
+		$type_voiture = 1;
+		$date = '2024-07-16';
+		// Detail du cf
+		if( $type_voiture != null){
+			// Recuperer la liste des voitures avec le type
+			$data['cf_details'] = ['v1','v2'];
+		}
+		else {
+			$data['cf_details'] = null;
+		}
+		
+		// Donnees de chiffre d'affaire
+		$data['cf'] = [
+			'impayer' => 500,
+			'payer'		=> 500
+		];
+		// 
 		// Recuperation des variables necessaires
 		$data['contents'] = "back_office/dashbord";
 		$this->load->view('templates/back_office_template',$data);

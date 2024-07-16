@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="<?=base_url('assets/font/bootstrap-icons.min.css')?>">
   <script src="<?= base_url('assets/js/jquery-3.2.1.min.js') ?>"></script>
   <link rel="stylesheet" href="<?=base_url('assets/css/specific.css')?>">
+  <script src="<?=base_url('assets/js/Chart.min.js')?>"></script>
+
   <title>Back Office</title>
 </head>
 <body>
