@@ -62,3 +62,26 @@ CREATE TABLE details_rdv(
     duree time not null
 )engine=InnoDB;
 
+
+
+
+
+--- REAL FUNC 
+
+DELIMITER //
+
+CREATE PROCEDURE slots_disponibles(
+    IN dateheuredebut_donnee DATETIME,
+    IN dateheurefin_donnee DATETIME
+)
+BEGIN
+    SELECT * FROM slot 
+    WHERE id not in (
+        SELECT idSlot FROM details_rdv 
+        WHERE ((date_heure_debut <= dateheuredebut_donnee AND date_heure_fin >= dateheuredebut_donnee) 
+        or (date_heure_debut <= dateheurefin_donnee AND date_heure_fin >= dateheurefin_donnee) 
+        or (date_heure_debut >= dateheuredebut_donnee AND date_heure_fin <= dateheurefin_donnee))
+    );
+END //
+
+DELIMITER ;

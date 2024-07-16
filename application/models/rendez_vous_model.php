@@ -25,12 +25,12 @@ class rendez_vous_model extends CI_Model {
 
         // recuperation typeservice choisit
         $type_service = $this->type_service_model->get_by_id($id_type_service);
-        $rdv['devis'] = $type_service['devis'];
+        $rdv['devis'] = $type_service['prix'];
 
         $this->db->insert('rendez_vous', $rdv);
 
         // dernier id de rdv inseré
-        $id_RDV = $this->db->insert_db();
+        $id_RDV = $this->db->insert_id();
 
         $details_rdv = [
             'id' => 'default',
