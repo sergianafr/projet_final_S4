@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class montant_type_service_model extends CI_Model
+class Montant_type_service_model extends CI_Model
 {
     public function get_montant_actu($id_service){
         $query = "SELECT mt.id, mt.id_type_service, mt.montant, mt.date_debut
