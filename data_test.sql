@@ -133,3 +133,6 @@ INSERT INTO date_reference VALUES
 
 INSERT INTO admin VALUES
 (default, 'asta@gmail.com', 'atlasss');
+
+INSERT INTO heure_travail VALUES
+(default, '08:00:00', '18:00:00');
