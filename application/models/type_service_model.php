@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class type_service_model extends CI_Model
 {
-
     // fonction qui recupere une ligne a partir de l'id
     public function get_by_id($id)
     {
@@ -20,5 +19,10 @@ class type_service_model extends CI_Model
     {
         $query = $this->db->get('type_service');
         return $query->result_array();
+    }
+
+    public function update($id, $new_data){
+        $this->db->where('id', $id);
+        $this->db->update('type_service', $new_data);
     }
 }
