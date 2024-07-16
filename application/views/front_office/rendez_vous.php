@@ -7,7 +7,7 @@
             <div class="w-75 mx-auto">
                 <form action="<?= site_url('rendez_vouz/prendre_rendez_vous') ?>" method="post">
                     <div class="text-center">
-                        <h1>Prendre rendez-vouz</h1>
+                        <h1>Prendre rendez-vous</h1>
                     </div>
                     <hr class="p-2">
                     <!-- Input Date -->

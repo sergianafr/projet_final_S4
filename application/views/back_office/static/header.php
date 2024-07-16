@@ -26,7 +26,7 @@
         <a class="nav-link" href="<?=site_url('back_office/date_reference')?>">Date Reference</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?=site_url('back_office/deivs')?>">Devis</a>
+        <a class="nav-link" href="<?=site_url('back_office/devis')?>">Devis</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?=site_url('back_office/rendez_vous')?>">Rendez-vous</a>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 /**
- * Controller pour les actions sur le rendez-vouz
+ * Controller pour les actions sur le rendez-vous
  */
 class rendez_vouz extends CI_Controller
 {
@@ -61,10 +61,10 @@ class rendez_vouz extends CI_Controller
     {
         // Recuperation des variables
 
-        // Logique de prise de rendez-vouz
+        // Logique de prise de rendez-vous
 
         // Redirection vers la page d'insertion
-        redirect('front_office/rendez_vouz');
+        redirect('front_office/rendez_vous');
     }
 
     /**
@@ -73,8 +73,6 @@ class rendez_vouz extends CI_Controller
     function  devis_pdf()
     {
         // Generer pdf
-
-
-        redirect('front_office/rendez_vouz');
+        redirect('front_office/rendez_vous');
     }
 }

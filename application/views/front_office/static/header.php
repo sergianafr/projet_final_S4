@@ -21,7 +21,7 @@
           <a class="nav-link active" href="<?=site_url('front_office/home')?>">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?=site_url('front_office/rendez_vouz')?>">Rendez-vouz</a>
+          <a class="nav-link" href="<?=site_url('front_office/rendez_vous')?>">rendez-vous</a>
         </li>
       </ul>
     </div>
