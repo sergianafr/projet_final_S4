@@ -3,10 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class devis extends CI_Controller {
     
-    function payement(){
-        // Recuperation de l'id et la date de payement
+    public $rdv;
+    public $input;
 
-        // Redirection vers la liste des devis
+    function payement(){
+        $id_rdv = intval($this->input->post('id_rdv'));
+        $date = $this->input->post('pay_day');
+
+        $this->load->model('rendez_vous_model', 'rdv');
+        $this->rdv->add_date_payement($id_rdv, $date);
+
         redirect('back_office/devis');
     }
 }

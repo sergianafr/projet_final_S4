@@ -22,6 +22,7 @@
                                                 <th>Service</th>
                                                 <th>Slot</th>
                                                 <th>Prix</th>
+                                                <th>Date Payement</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -30,6 +31,7 @@
                                                 <td><?= $value['libelle_service'] ?></td>
                                                 <td><?= $value['libelle_slot'] ?></td>
                                                 <td><?= $value['prix_service'] ?> Ar</td>
+                                                <td>+++</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -38,7 +40,8 @@
                                         <input type="hidden" name="id_devis">
                                         <div class="row">
                                             <div class="form-floating col">
-                                                <input type="date" name="date_payement" class="form-control" id="payementInput" required>
+                                                <input type="hidden" name="id_rdv" value="<?= $value['id_rdv'] ?>">
+                                                <input type="date" name="pay_day" class="form-control" id="payementInput" required>
                                                 <label for="payementInput">Date de payement</label>
                                             </div>
                                             <div class="col">
