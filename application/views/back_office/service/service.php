@@ -2,9 +2,13 @@
     <div class="container">
         <div class="row mb-3">
             <h1>Liste des services</h1>
+            <?php if (isset($_GET['msg'])) { ?>
+                <p class="alert alert-success"><?= $_GET['msg'] ?></p>
+            <?php } ?>
         </div>
         <div class="row g-4 ">
-            <?php foreach ($services as $key => $value) { $id = $value['id'];?>
+            <?php foreach ($services as $key => $value) {
+                $id = $value['id']; ?>
                 <div class="col-sm-12 col-lg-4">
                     <div class="card">
                         <div class="card-body bg-light">

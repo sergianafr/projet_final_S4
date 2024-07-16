@@ -4,12 +4,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class service extends CI_Controller
 {
     public $ts;
+    public $crud;
     public $input;
     public $form_validation;
 
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('CRUD_model', 'crud');
         $this->load->model('type_service_model', 'ts');
         $this->load->library('form_validation');
     }
@@ -67,18 +69,17 @@ class service extends CI_Controller
                 'prix' => $this->input->post('prix'),
             ];
             $id_service = intval($this->input->post('id_service'));
-            $this->ts->update($id_service, $new);  
+            $this->crud->update($id_service, $new, 'type_service');  
         }
-        redirect('back_office/service/service');
+        redirect('back_office/service/service?msg=Mise a jour reussi!');
     }
 
     function supprimer()
     {
-        // Recuperation de l'id par l'url
-
-        // Suppression du service
+        $id_service = intval($this->input->get('id_service'));
+        $this->crud->delete($id_service, 'type_service');
 
         // Redirection vers la liste des services
-        redirect('back_office/service');
+        redirect('back_office/service/service?msg=Suppression reussi!');
     }
 }
