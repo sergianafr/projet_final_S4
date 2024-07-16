@@ -16,7 +16,7 @@ CREATE TABLE type_service(
     id int primary key auto_increment,
     libelle varchar(50) not null unique,
     duree time not null,
-    prix double precision not null
+    prix double precision default null
 )engine=InnoDB;
 
 CREATE TABLE type_vehicule(
@@ -35,6 +35,13 @@ CREATE TABLE admin(
     pseudo varchar(30),
     mdp varchar(100)
 )engine=InnoDB;
+
+CREATE TABLE montant_type_service (
+    id int primary key auto_increment,
+    id_type_service int references type_service(id),
+    montant double precision not null,
+    date_debut date
+) engine=InnoDB;
 
 CREATE TABLE rendez_vous(
     id int primary key auto_increment,
@@ -62,6 +69,20 @@ CREATE TABLE details_rdv(
     duree time not null
 )engine=InnoDB;
 
+CREATE TABLE services_temp(
+    service varchar(50),
+    duree time
+);
+CREATE TABLE travaux_temp(
+    voiture varchar(8),
+    type_voiture varchar(50),
+    date_rdv date,
+    heure_rdv time,
+    type_service varchar(50),
+    montant double precision,
+    date_paiement date
+);
+
 CREATE VIEW v_devis AS
 SELECT 
     rdv.id as id_rdv,
@@ -87,14 +108,13 @@ CREATE PROCEDURE slots_disponibles(
     IN dateheurefin_donnee DATETIME
 )
 BEGIN
-    SELECT DISTINCT s.id, s.libelle
-        FROM slot s
-        LEFT JOIN details_rdv dr ON s.id = dr.idSlot
-        WHERE NOT (
-            (dateheuredebut_donnee BETWEEN dr.date_heure_debut AND dr.date_heure_fin)
-            OR (dateheurefin_donnee BETWEEN dr.date_heure_debut AND dr.date_heure_fin)
-        ) AND (dateheuredebut_donnee >=  dr.date_heure_debut AND dateheurefin_donnee >  dr.date_heure_fin )
-        OR dr.id IS NULL;
+    SELECT * FROM slot 
+    WHERE id not in (
+        SELECT idSlot FROM details_rdv 
+        WHERE ((date_heure_debut <= dateheuredebut_donnee AND date_heure_fin >= dateheuredebut_donnee) 
+        or (date_heure_debut <= dateheurefin_donnee AND date_heure_fin >= dateheurefin_donnee) 
+        or (date_heure_debut >= dateheuredebut_donnee AND date_heure_fin <= dateheurefin_donnee))
+    );
 END //
 
 DELIMITER ;

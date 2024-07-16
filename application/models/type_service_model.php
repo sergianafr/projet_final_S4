@@ -3,6 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class type_service_model extends CI_Model
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('CRUD_model');
+        $this->load->model('services_temp_model');
+    }
     // fonction qui recupere une ligne a partir de l'id
     public function get_by_id($id)
     {
@@ -21,6 +27,13 @@ class type_service_model extends CI_Model
         return $query->result_array();
     }
 
+    // La seule fonction a appeler pour importer un csv dans base 
+    public function import_csv($fileName){
+        $this->service_temp_model->save_to_temp($fileName);
+        $query = "INSERT INTO type_service(libelle, duree) SELECT DISTINCT * FROM services_temp";
+        $this->db->query($query);
+    }
+    
     public function update($id, $new_data){
         $this->db->where('id', $id);
         $this->db->update('type_service', $new_data);
