@@ -64,17 +64,17 @@ class back_office extends CI_Controller
 
 	function devis()
 	{
-		$data['devis'] = $this->crud->get_all('v_devis');
+		$data['devis'] = $this->crud->get_all('garage_v_devis');
 		$data['contents'] = "back_office/devis";
 		$this->load->view('templates/back_office_template', $data);
 	}
 
 	function rendez_vous()
 	{
-		$data['services'] = $this->crud->get_all('type_service');
-		$data['clients'] = $this->crud->get_all('client');
+		$data['services'] = $this->crud->get_all('garage_type_service');
+		$data['clients'] = $this->crud->get_all('garage_client');
 
-		$heure_travail = $this->crud->get_all('heure_travail')[0];
+		$heure_travail = $this->crud->get_all('garage_heure_travail')[0];
 		$data['heure_debut'] = $heure_travail['debut'];
 		$data['heure_fin'] = $heure_travail['fin'];
 
@@ -137,20 +137,15 @@ class back_office extends CI_Controller
 		$service_file = $this->input->post('service_file');
 		$travaux_file = $this->input->post('travaux_file');
 
-		$err = []; // Tableau qui va contenir tout les erreurs
-
 		$this->load->model('type_service_model', 'ts');
 		if ($service_file != "") {
 			$errors = $this->ts->import_csv($service_file);
-			if (count($errors) > 0) $err[] = $errors;
 		}
 		if ($travaux_file != "") {
 			$errors = $this->ts->import_csv($travaux_file);
-			if (count($errors) > 0) $err[] = $errors;
 		}
 
-		if (count($err) > 0) var_dump($err);
-		else redirect('back_office/donnees_csv');
+		redirect('back_office/donnees_csv');
 	}
 
 	function slot()

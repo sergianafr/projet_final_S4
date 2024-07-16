@@ -13,7 +13,7 @@ class date_reference extends CI_Controller
     {
         $this->load->model('CRUD_model', 'crud');
         $date_reference = $this->input->post('date_reference');
-        $this->crud->insert(['date_reference' => $date_reference], 'date_reference');
+        $this->crud->insert(['date_reference' => $date_reference], 'garage_date_reference');
 
         // Redirection vers la page de formulaire
         redirect('back_office/date_reference');

@@ -19,7 +19,7 @@ class devis extends CI_Controller
     {
         $pay_day = $this->input->post('pay_day');
         $id_rdv = intval($this->input->post('id_rdv'));
-        $rdv = $this->crud->get_by_id($id_rdv, 'rendez_vous');
+        $rdv = $this->crud->get_by_id($id_rdv, 'garage_rendez_vous');
 
         $date_rdv = new DateTime($rdv['debut']);
         $date_rdv->setTime(0, 0, 0);
