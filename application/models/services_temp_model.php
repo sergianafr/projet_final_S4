@@ -38,11 +38,11 @@ class services_temp_model extends CI_Model
                     );
                     $pattern = '/^(?:[01]\d|2[0-3]):[0-5]\d$/';
                     if($serv_data['service'] == null){
-                        $errors['service'] = "service null a la ligne ".$count_row;
+                        $errors[] = "service null a la ligne ".$count_row;
                         $insert = false;
                     } 
                     if($serv_data['duree'] == null){
-                        $errors['duree'] = "duree null a la ligne ".$count_row;
+                        $errors[] = "duree null a la ligne ".$count_row;
                         $insert = false;
                     } else if(!preg_match($pattern, $serv_data['duree'])){
                         $errors['duree'] = "duree qui ne correspond pas au format d'heure".$count_row;

@@ -69,3 +69,36 @@ if (!function_exists('get_date')) {
         return $formattedDate;
     }
 }
+
+if (!function_exists('valid_format')) {
+    function valid_format($date) {
+        // Regular expression to match the 'yyyy-mm-dd' format
+        $pattern2 = '/^\d{2}-\d{2}-\d{4}$/';
+        $pattern = '/^\d{2}\/\d{2}\/\d{4}$/';
+        
+        // Check if the input date matches the pattern
+        if (preg_match($pattern, $date)) {
+            // Further validation to check if it's a valid date
+            $date_parts = explode('/', $date);
+            return checkdate($date_parts[1], $date_parts[0], $date_parts[2]);
+            
+        }
+        return false;
+    }
+}
+
+if (!function_exists('transformDate')) {
+function transformDate($date) {
+    // Create a DateTime object from the given date string
+    $dateObject = DateTime::createFromFormat('d/m/Y', $date);
+
+    // Check if the date object was created successfully
+    if ($dateObject) {
+        // Return the date in 'Y-m-d' format
+        return $dateObject->format('Y-m-d');
+    } else {
+        // Handle invalid date format
+        return false;
+    }
+}
+}

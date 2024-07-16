@@ -118,3 +118,11 @@ BEGIN
 END //
 
 DELIMITER ;
+
+SELECT * FROM slot 
+    WHERE id not in (
+        SELECT idSlot FROM details_rdv 
+        WHERE ((date_heure_debut <= dateheuredebut_donnee AND date_heure_fin >= dateheuredebut_donnee) 
+        or (date_heure_debut <= dateheurefin_donnee AND date_heure_fin >= dateheurefin_donnee) 
+        or (date_heure_debut >= dateheuredebut_donnee AND date_heure_fin <= dateheurefin_donnee))
+    );
