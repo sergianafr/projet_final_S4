@@ -13,7 +13,7 @@ class front_office extends CI_Controller
 		$data['types_voiture'] = [
 			'Leger', '4x4', 'Utilitaire'
 		];
-		// Recuperation du template de login
+		
 		$this->load->view('front_office/login', $data);
 	}
 
@@ -22,18 +22,15 @@ class front_office extends CI_Controller
 	 */
 	function home()
 	{
-		// Chemin home
 		$data['contents'] = "front_office/home";
-		// Template Front Office
 		$chemin_view = "templates/front_office_template";
-
 		$this->load->view($chemin_view, $data);
 	}
 
 	/**
 	 * Prendre rendez-vouz
 	 */
-	function rendez_vouz()
+	function rendez_vous()
 	{
 		$this->load->model("type_service_model", "ts");
 		$data['services'] = $this->ts->get_all();
@@ -44,7 +41,7 @@ class front_office extends CI_Controller
 		$data['heure_fin'] = "18:00";
 
 		// Chemin page rendez-vouz
-		$data['contents'] = "front_office/rendez_vouz";
+		$data['contents'] = "front_office/rendez_vous";
 		// Template Front Office
 		$chemin_view = "templates/front_office_template";
 		$this->load->view($chemin_view, $data);
