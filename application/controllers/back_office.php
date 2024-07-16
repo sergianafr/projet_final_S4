@@ -59,5 +59,16 @@ class back_office extends CI_Controller {
 		$data['contents'] = "back_office/rendez_vous";
 		$this->load->view('templates/back_office_template',$data);
 	}
+	/**
+	 * Acces a la page de date reference
+	 */
+	function date_reference(){
+		// La date de reference actuelle
+		$data['date_actuelle'] = new DateTime();
+
+		// Affichage de la view
+		$data['contents']= 'back_office/date_reference' ;
+		$this->load->view('templates/back_office_template',$data);
+	}
 }
 ?>
