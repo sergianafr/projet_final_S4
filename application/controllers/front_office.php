@@ -31,17 +31,20 @@ class front_office extends CI_Controller
 	}
 
 	/**
-	 * Prendre rendez-vous
-	*/
-	function rendez_vous(){
-		// La liste des services
-		$data['services'] = ['Simple', 'Standard', 'Complexe', 'Entretient'];
+	 * Prendre rendez-vouz
+	 */
+	function rendez_vouz()
+	{
+		$this->load->model("type_service_model", "ts");
+		$data['services'] = $this->ts->get_all();
+
 		// Heure d'ouverture (min)
 		$data['heure_debut'] = "08:00";
 		// Heure de fermeture (max)
 		$data['heure_fin'] = "18:00";
-		// Chemin page rendez-vous
-		$data['contents'] = "front_office/rendez_vous";
+
+		// Chemin page rendez-vouz
+		$data['contents'] = "front_office/rendez_vouz";
 		// Template Front Office
 		$chemin_view = "templates/front_office_template";
 		$this->load->view($chemin_view, $data);
