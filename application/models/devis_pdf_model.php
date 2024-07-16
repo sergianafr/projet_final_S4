@@ -47,8 +47,6 @@ class devis_pdf_model extends CI_Model
             $pdf->Ln();
         // Ligne de clôture
         $pdf->Cell(array_sum($w), 0, '', 'T');
-        $pdf->Output($pdfFilePath, 'F');
-
-        return $pdfFilePath;
+        $pdf->Output("devis DD-MM-YYYY", 'F');
     }
 }

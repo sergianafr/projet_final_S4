@@ -70,5 +70,12 @@ class back_office extends CI_Controller {
 		$data['contents']= 'back_office/date_reference' ;
 		$this->load->view('templates/back_office_template',$data);
 	}
+
+	/**
+	 * Reinitialisation des donnees
+	*/
+	function reset_data(){
+		
+	}
 }
 ?>
