@@ -30,7 +30,7 @@
           <!-- LOGIN -->
           <div class="form-floating mb-3">
             <input type="email" class="form-control" id="floatingInput" name="login" placeholder="name@example.com"
-              value="atlas@gmail.com">
+              value="asta@gmail.com">
             <label for="floatingInput">Login</label>
           </div>
           <!-- PASSWORD -->

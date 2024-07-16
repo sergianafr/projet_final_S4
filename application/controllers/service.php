@@ -44,7 +44,7 @@ class service extends CI_Controller
                 'duree' => $this->input->post('duree'),
                 'prix' => $this->input->post('prix'),
             ];
-            $this->crud->insert($new, 'type_service');  
+            $this->crud->insert($new, 'garage_type_service');  
         }
         redirect('back_office/service/service?msg=Ajout reussi!');
     }
@@ -80,7 +80,7 @@ class service extends CI_Controller
                 'prix' => $this->input->post('prix'),
             ];
             $id_service = intval($this->input->post('id_service'));
-            $this->crud->update($id_service, $new, 'type_service');  
+            $this->crud->update($id_service, $new, 'garage_type_service');  
         }
         redirect('back_office/service/service?msg=Mise a jour reussi!');
     }
@@ -88,7 +88,7 @@ class service extends CI_Controller
     function supprimer()
     {
         $id_service = intval($this->input->get('id_service'));
-        $this->crud->delete($id_service, 'type_service');
+        $this->crud->delete($id_service, 'garage_type_service');
         redirect('back_office/service/service?msg=Suppression reussi!');
     }
 }

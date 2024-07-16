@@ -11,7 +11,7 @@ class front_office extends CI_Controller
 		$this->session->sess_destroy();
 
 		$this->load->model('CRUD_model', 'crud');
-		$data['types_voiture'] = $this->crud->get_all('type_vehicule');
+		$data['types_voiture'] = $this->crud->get_all('garage_type_vehicule');
 		
 		$this->load->view('front_office/login', $data);
 	}
