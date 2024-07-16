@@ -118,4 +118,17 @@ class back_office extends CI_Controller
 		// Retour a la page d'accueil ou dashbord
 		redirect('back_office/home');
 	}
+	/**
+	 * Formulaire d'importation de donnees
+	 */
+	function donnees_csv(){
+		$data['contents']= 'back_office/donnees' ;
+		$this->load->view('templates/back_office_template',$data);
+	}
+	/**
+	 * Recupere le contenu des fichiers et insertion dans la base de donnee
+	 */
+	function import_files(){
+		// Recuperation du contenu
+	}
 }

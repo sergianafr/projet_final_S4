@@ -32,6 +32,9 @@
       <li class="nav-item">
         <a class="nav-link" href="<?=site_url('back_office/rendez_vous')?>">Rendez-vous</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=site_url('back_office/donnees_csv')?>">Donnees</a>
+      </li>
     </ul>
   </div>
   <div class="d-flex gap-2">
