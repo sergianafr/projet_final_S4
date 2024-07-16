@@ -124,6 +124,35 @@ class back_office extends CI_Controller
 	 * Recupere le contenu des fichiers et insertion dans la base de donnee
 	 */
 	function import_files(){
-		// Recuperation du contenu
+		// Recuperation du chemin des fichiers
+
+		// Recuperation des contenus
+
+		// Tentative d'insertion
+
+		// Redirection
+		redirect('back_office/donnees_csv');
+	}
+
+	function slot(){
+		// Recuperation de date filtre
+		$date_filtre = null;
+		// La liste des slots
+		// Les details sur les slots
+		$data['slots'] = ['A','B','C'] ;
+
+		// Filtrer par date et slot
+		if($date_filtre == null){
+			// La date filter est la date de reference
+			$date_filtre = '2024-07-16';
+		}
+		// Recuperation de la liste des voitures qui utilisent le slot pour la date donnee
+		foreach($data['slots'] as $index => $slot){
+			// La liste des voitures d'une slot par son id et la date de filtre
+			$data['voitures'][$index] = ['voiture1','voiture2','voiture3'];
+		}
+		// Affichage de la view
+		$data['contents'] = 'back_office/slot';
+		$this->load->view('templates/back_office_template',$data);
 	}
 }
