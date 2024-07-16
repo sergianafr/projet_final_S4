@@ -25,5 +25,5 @@ INSERT INTO details_rdv VALUES
 INSERT INTO date_reference VALUES
 (default, '2024-01-01');
 
-
-CALL slots_disponibles('2024-07-16 08:42:00', '2024-07-16 11:00:00');
+INSERT INTO admin VALUES
+(default, 'asta@gmail.com', 'atlasss');

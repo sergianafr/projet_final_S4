@@ -51,31 +51,32 @@
     $('form').submit(function(e) {
       e.preventDefault();
       $('#errorMsg').html('');
-      console.log($('input[name=login]').val());
-      console.log($('input[name=pwd]').val());
+      authenticate('<?= site_url('back_office/auth') ?>');
     });
 
-    // $.ajax({
-    //   url: '<?= site_url('login_client/verify') ?>',
-    //   type: 'POST',
-    //   data: {
-    //     pseudo: $('input[name=login]').val(),
-    //     pwd: $('input[name=pwd]').val()
-    //   },
-    //   success: function(data) {
-    //     if (data.status === 'create') {
-    //       show_modal()
-    //     } else if (data.status === 'wrong') {
-    //       $('#errorMsg').html("Matricule non correspondant au type!")
-    //     } else if (data.status === 'success') {
-    //       go_home(data.id_client)
-    //     }
-    //   },
-    //   error: response => {
-    //     const data = JSON.parse(response.responseText)
-    //     $('#errorMsg').html(data.errors)
-    //   }
-    // });
+    function authenticate(url) {
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: {
+          login: $('input[name=login]').val(),
+          pwd: $('input[name=pwd]').val()
+        },
+        success: function(data) {
+          if (data.status === 'error-login') {
+            $('#errorMsg').html('Login inconnu!');
+          } else if (data.status === 'error-pwd') {
+            $('#errorMsg').html("Mot de passe incorrect!");
+          } else if (data.status === 'success') {
+            window.location.href = 'home';
+          }
+        },
+        error: response => {
+          const data = JSON.parse(response.responseText)
+          $('#errorMsg').html(data.errors)
+        }
+      });
+    }
   </script>
 </body>
 
