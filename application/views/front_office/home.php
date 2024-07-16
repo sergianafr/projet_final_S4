@@ -1,4 +1,4 @@
-<section class="row">
+<section id="hero_section" class="row">
     <style>
         img {
             width: 100%;

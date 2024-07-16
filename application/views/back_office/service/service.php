@@ -1,7 +1,7 @@
-<section class="my-3">
+<section id="hero_section" class="my-3">
     <div class="container">
         <div class="row mb-3">
-            <h1>Liste des services</h1>
+            <h2>Liste des services</h2>
             <?php if (isset($_GET['msg'])) { ?>
                 <p class="alert alert-success"><?= $_GET['msg'] ?></p>
             <?php } ?>
@@ -12,18 +12,14 @@
                 <div class="col-sm-12 col-lg-4">
                     <div class="card">
                         <div class="card-body bg-light">
-                            <h2 class="card-title text-dark"><?= $value['libelle'] ?></h5>
+                            <h4 class="card-title text-dark"><?= $value['libelle'] ?></h4>
                                 <div class="container">
                                     <ul class="navbar-nav">
                                         <li class="nav-item d-inline">
-                                            <h4 class="d-inline">
-                                                <p class="text-dark"> Duree : <?= $value['duree'] ?></p>
-                                            </h4>
+                                            <p class="text-dark"> Duree : <?= $value['duree'] ?></p>
                                         </li>
                                         <li class="nav-item">
-                                            <h4 class="d-inline">
-                                                <p class="text-dark"> Prix : <?= $value['prix'] ?> Ar</p>
-                                            </h4>
+                                            <p class="text-dark"> Prix : <?= $value['prix'] ?> Ar</p>
                                         </li>
                                     </ul>
                                 </div>
