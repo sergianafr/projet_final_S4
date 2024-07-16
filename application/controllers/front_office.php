@@ -35,6 +35,7 @@ class front_office extends CI_Controller
 	 */
 	function rendez_vouz()
 	{
+		// TODO: load services from db
 		// La liste des services
 		$data['services'] = ['Simple', 'Standard', 'Complexe', 'Entretient'];
 		// Heure d'ouverture (min)
