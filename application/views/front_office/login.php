@@ -98,7 +98,10 @@
           matricule: matricule,
           type_voiture: type_voiture
         },
-        success: () => console.log("Redirection and account creation..."),
+        success: (response) => {
+          const data = JSON.parse(response);
+          window.location.href = data.url;
+        },
         error: response => {
           const data = JSON.parse(response.responseText)
           $('#errorMsg').html(data.errors)
@@ -110,7 +113,10 @@
       $.ajax({
         url: '<?= site_url('login_client/home') ?>',
         type: 'GET',
-        success: () => console.log("Redirection and account creation..."),
+        success: (response) => {
+          const data = JSON.parse(response);
+          window.location.href = data.url;
+        },
         error: (err) => console.error(err)
       });
     }

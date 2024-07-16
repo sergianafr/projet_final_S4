@@ -1,10 +1,13 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-class rendez_vous_model extends CI_Model {
+defined('BASEPATH') or exit('No direct script access allowed');
 
-    public function __construct(){
+class rendez_vous_model extends CI_Model
+{
+
+    public function __construct()
+    {
         parent::__construct();
-        $this->load->helper('dateformat'); 
+        $this->load->helper('dateformat');
         $this->load->model('slot_model');
         $this->load->model('type_service_model');
         $this->load->model('date_reference_model');
@@ -13,12 +16,13 @@ class rendez_vous_model extends CI_Model {
     // fonction qui crée un rendez-vous et insere les données dans la table details_rdv
     // Recuperer le id_slot a partir de la fonction slots_disponibles dans slot_model
     // Recuperer date_prise_rdv dans le model date_reference_model avec la fonction get_last()
-    public function creer_rdv($id_client, $date_rdv, $date_prise_rdv, $id_type_service, $id_slot){
+    public function creer_rdv($id_client, $date_rdv, $date_prise_rdv, $id_type_service, $id_slot)
+    {
         $rdv = [
             'id' => 'default',
-            'id_client' =>$id_client,
-            'debut' =>$date_rdv,
-            'date_prise_rdv' =>$date_prise_rdv,
+            'id_client' => $id_client,
+            'debut' => $date_rdv,
+            'date_prise_rdv' => $date_prise_rdv,
             'id_type_service' => $id_type_service,
             'id_slot' => $id_slot
         ];
@@ -34,9 +38,9 @@ class rendez_vous_model extends CI_Model {
 
         $details_rdv = [
             'id' => 'default',
-            'idRDV' =>$id_RDV,
-            'date_heure_debut' =>$date_rdv,
-            'idSlot' =>$id_slot,
+            'idRDV' => $id_RDV,
+            'date_heure_debut' => $date_rdv,
+            'idSlot' => $id_slot,
             'duree' => $type_service['duree'],
             'date_heure_fin' => get_date_fin($date_rdv, $type_service['duree'])
         ];

@@ -3,10 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class login_client extends CI_Controller
 {
-
     public $form_validation;
     public $client;
-    public $home_client = "front_office/home";
 
     public function __construct()
     {
@@ -21,20 +19,19 @@ class login_client extends CI_Controller
             'num_matricule' => $this->input->post('matricule'),
             'id_type_vehicule' => $this->input->post('type_voiture')
         ];
-
         $this->client->creer_compte($account);
         $this->session->set_userdata($account);
-        $this->load->view($this->home_client);
+        echo json_encode(['url' => site_url('front_office/home')]);
     }
 
-    public function home_account()
+    public function home()
     {
         $account = [
             'num_matricule' => $this->input->post('matricule'),
             'id_type_vehicule' => $this->input->post('type_voiture')
         ];
         $this->session->set_userdata($account);
-        $this->load->view($this->home_client);
+        echo json_encode(['url' => site_url('front_office/home')]);
     }
 
     public function verify()
