@@ -10,6 +10,13 @@ class CRUD_model extends CI_Model
         return $query->result_array();
     }
 
+    
+    public function get_by_id($id, $table_name)
+    {
+        $query = $this->db->query("SELECT * FROM $table_name WHERE id = $id");
+        return $query->row_array();
+    }
+
     // $data est un tableau associatif dont chaque colonne correspond aux colonnes de la table 
     public function insert($data, $nom_table)
     {
