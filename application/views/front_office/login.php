@@ -112,7 +112,7 @@
     function go_home(id_client) {
       $.ajax({
         url: '<?= site_url('login_client/home') ?>',
-        type: 'GET',
+        type: 'POST',
         data: { id_client: id_client },
         success: (response) => {
           const data = JSON.parse(response);

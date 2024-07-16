@@ -11,6 +11,7 @@
                     </div>
                     <hr class="p-2">
                     <p class="text-danger" id="errorMsg"></p>
+                    <p class="text-success" id="successMsg"></p>
 
                     <!-- Input Date -->
                     <div class="form-floating mb-3">
@@ -54,8 +55,7 @@
                     id_slot: id_slot
                 },
                 success: (response) => {
-                    const data = JSON.parse(response);
-                    window.location.href = data.url;
+                    $('#successMsg').html('Votre rendez-vous a ete enregistre!');
                 },
                 error: response => {
                     const data = JSON.parse(response.responseText)
@@ -66,6 +66,9 @@
 
         $('form').submit(function(e) {
             e.preventDefault();
+            $('#successMsg').html('');
+            $('#errorMsg').html('');
+
             $.ajax({
                 url: '<?= site_url('rendez_vous/verify') ?>',
                 type: 'POST',
