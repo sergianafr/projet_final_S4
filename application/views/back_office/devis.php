@@ -2,13 +2,14 @@
     <div class="container">
         <div class="row mb-3">
             <h1 class="text-center text-primary">Liste des devis</h1>
-            <p class="alert alert-danger" id="errorMsg"></p>
+                <p class="alert alert-danger d-none" id="errorMsg"></p>
+                <p class="alert alert-success d-none" id="successMsg"></p>
             <hr>
         </div>
         <div class="row">
             <?php foreach( $devis as $key => $value){ ?>
             <div class="col-sm-12 mb-3" >
-                <div class="card">
+                <div class="card p-2">
                     <div class="card-body">
                         <h3 class="card-title text-dark">Detail devis</h5>
                     </div>
@@ -34,6 +35,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <?php if($value['pay_day'] == null){ ?>
                             <form data-key="<?= $key ?>" action="<?= site_url("devis/payement") ?>" method="POST" class="p-2">
                             <div class="d-flex justify-content-end gap-2">
                                 <div class="form-floating">
@@ -46,6 +48,7 @@
                                     </div>
                                 </div>
                             </form>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -64,6 +67,8 @@
                 },
                 success: function(response) {
                     $('#successMsg').html('Payement effectue avec succes. Les changements seront pris en compte apres le rafraichissement de la page.');
+                    document.getElementById('successMsg').classList.replace('d-none','d-block');
+                    document.getElementById('errorMsg').classList.replace('d-block','d-none');
                     $('#errorMsg').html('');
                 },
                 error: response => {
@@ -73,7 +78,7 @@
                 }
             });
         }
-
+        
         function verify_pay_day(id_rdv, pay_day) {
             $.ajax({
                 url: '<?= site_url('devis/verify_pay_day') ?>',
@@ -87,6 +92,8 @@
                     console.log(data)
                     if (data.status === 'no') {
                         $('#errorMsg').html('La date de payement doit etre superieur ou egale a la date du rendez-vous.');
+                        document.getElementById('errorMsg').classList.replace('d-none','d-block');
+                        document.getElementById('successMsg').classList.replace('d-block','d-none');
                         $('#successMsg').html('');
                     } else if (data.status === 'ok') {
                         submit(id_rdv, pay_day)
