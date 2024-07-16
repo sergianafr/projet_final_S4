@@ -3,10 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * Controller pour les actions sur le rendez-vous
  */
-class rendez_vouz extends CI_Controller
+class rendez_vous extends CI_Controller
 {
     public $form_validation;
     public $slot;
+    public $rdv;
+    public $date_ref;
     public $type_service;
     public $input;
 
@@ -14,6 +16,8 @@ class rendez_vouz extends CI_Controller
     {
         parent::__construct();
         $this->load->model('slot_model', 'slot');
+        $this->load->model('rendez_vous_model', 'rdv');
+        $this->load->model('date_reference_model', 'date_ref');
         $this->load->model('type_service_model', 'type_service');
         $this->load->helper('dateformat');
         $this->load->library('form_validation');
@@ -37,21 +41,33 @@ class rendez_vouz extends CI_Controller
             $type_service = $this->type_service->get_by_id($service);
             $date_fin = get_date_fin($heure_debut, $type_service['duree']);
             $date_debut = get_date($date_rdv, $heure_debut);
-
-            echo json_encode(['debut' => $date_debut, 'fin' => $date_fin]);
+            $date_ref = $this->date_ref->get_last();
 
             $slot_dispo = $this->slot->get_slots_disponibles($date_debut, $date_fin);
             if (count($slot_dispo) > 0) {
-                echo json_encode(['status' => 'success']);
+                echo json_encode([
+                    'status' => 'success',
+                    'id_client' => $this->session->userdata('id_client'),
+                    'date_rdv' => $date_debut,
+                    'date_prise_rdv' => $date_ref['date_reference'],
+                    'id_type_service' => intval($type_service['id']),
+                    'id_slot' => intval($slot_dispo[0]->id)
+                ]);
             } else {
                 echo json_encode(['status' => 'impossible']);
             }
-
-            // echo json_encode(['slot' => $slot_dispo]);
-            // TODO
-            // -- slot dipso
-            // validation du rdv
         }
+    }
+
+    public function save_rdv()
+    {
+        $id_client = $this->input->post('id_client');
+        $date_rdv = $this->input->post('date_rdv');
+        $date_prise_rdv = $this->input->post('date_prise_rdv');
+        $id_type_service = $this->input->post('id_type_service');
+        $id_slot = $this->input->post('id_slot');
+
+        $this->rdv->creer_rdv($id_client, $date_rdv, $date_prise_rdv, $id_type_service, $id_slot);
     }
 
     /**
