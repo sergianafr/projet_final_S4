@@ -3,6 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class CRUD_model extends CI_Model
 {
+    public function clear_tables_data() {
+        $tables = array('slot', 'type_service', 'type_vehicule', 'client', 'rendez_vous', 'date_reference', 'details_rdv');
+        foreach ($tables as $table) {
+            $this->db->empty_table($table);
+        }
+        echo "Toutes les tables ont été vidées.";
+    }
 
     public function get_all($table_name)
     {
