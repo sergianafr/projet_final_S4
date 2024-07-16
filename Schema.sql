@@ -16,7 +16,7 @@ CREATE TABLE type_service(
     id int primary key auto_increment,
     libelle varchar(50) not null unique,
     duree time not null,
-    prix double precision not null
+    prix double precision default null
 )engine=InnoDB;
 
 CREATE TABLE type_vehicule(
@@ -35,6 +35,13 @@ CREATE TABLE admin(
     pseudo varchar(30),
     mdp varchar(100)
 )engine=InnoDB;
+
+CREATE TABLE montant_type_service (
+    id int primary key auto_increment,
+    id_type_service int references type_service(id),
+    montant double precision not null,
+    date_debut date
+) engine=InnoDB;
 
 CREATE TABLE rendez_vous(
     id int primary key auto_increment,
@@ -64,9 +71,21 @@ CREATE TABLE details_rdv(
 
 
 
+CREATE TABLE services_temp(
+    service varchar(50),
+    duree time
+);
+CREATE TABLE travaux_temp(
+    voiture varchar(8),
+    type_voiture varchar(50),
+    date_rdv date,
+    heure_rdv time,
+    type_service varchar(50),
+    montant double precision,
+    date_paiement date
+);
 
 
---- REAL FUNC 
 
 DELIMITER //
 

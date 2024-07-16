@@ -4,6 +4,7 @@ INSERT INTO client values (default, '6090TBB', 1), (default, '7890TAB', 1), (def
 
 INSERT INTO slot values
 (default, 'A'), (default, 'B'), (default, 'C');
+INSERT INTO date_reference VALUES(null, '2024-07-16');
 
 INSERT INTO type_service values 
 (default, 'Reparation simple', '1:00:00', 150000),
@@ -11,7 +12,6 @@ INSERT INTO type_service values
 (default, 'Reparation complexe', '8:00:00', 800000),
 (default, 'Entretien', '2:30:00', 300000);
 
-INSERT INTO date_reference VALUES(null, '2024-07-16');
 
 INSERT INTO rendez_vous VALUES
 (default, 1, '2024-07-07 8:00:00', '2024-07-02', 2, 1,  150000, default);
