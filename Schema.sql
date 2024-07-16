@@ -62,6 +62,23 @@ CREATE TABLE details_rdv(
     duree time not null
 )engine=InnoDB;
 
+CREATE VIEW v_devis AS
+SELECT 
+    rdv.id as id_rdv,
+    client.id as id_client,
+    client.num_matricule as matricule,
+    rdv.debut as date_rdv, 
+    rdv.date_prise_rdv,
+    slot.id as id_slot, 
+    slot.libelle as libelle_slot,
+    ts.id as id_type_service, 
+    ts.libelle as libelle_service,
+    ts.prix as prix_service
+FROM rendez_vous AS rdv 
+    JOIN slot ON rdv.id_slot = slot.id
+    JOIN client ON rdv.id_client = client.id
+    JOIN type_service AS ts ON rdv.id_type_service = ts.id;
+
 DELIMITER //
 
 CREATE PROCEDURE slots_disponibles(

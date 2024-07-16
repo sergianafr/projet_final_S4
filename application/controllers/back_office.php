@@ -12,6 +12,7 @@ class back_office extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('admin_model', 'admin');
+		$this->load->model('CRUD_model', 'crud');
 		$this->load->model("type_service_model", "ts");
 		$this->load->library('form_validation');
 	}
@@ -70,7 +71,9 @@ class back_office extends CI_Controller
 	function devis()
 	{
 		// La liste des devis
-		$data['devis'] = ['devis1', 'devis2', 'devis3'];
+		// $data['devis'] = ['devis1', 'devis2', 'devis3'];
+		$data['devis'] = $this->crud->get_all('v_devis');
+
 		$data['contents'] = "back_office/devis";
 		$this->load->view('templates/back_office_template', $data);
 	}
