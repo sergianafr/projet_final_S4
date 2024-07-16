@@ -9,13 +9,13 @@ CREATE TABLE heure_travail(
 
 CREATE TABLE slot(
     id int primary key auto_increment,
-    libelle varchar(2) not null unique,
+    libelle varchar(2) not null unique
 )engine=InnoDB;
 
 CREATE TABLE type_service(
     id int primary key auto_increment,
     libelle varchar(50) not null unique,
-    duree decimal(4,2) not null,
+    duree time not null,
     prix double precision not null
 )engine=InnoDB;
 
@@ -51,3 +51,14 @@ CREATE TABLE date_reference(
     id int primary key auto_increment,
     date_reference date not null
 )engine=InnoDB;
+
+
+CREATE TABLE details_rdv(
+    id int primary key auto_increment,
+    idRDV int references rdv(id),
+    date_heure_debut datetime not null,
+    date_heure_fin datetime not null,
+    idSlot int references slot(id),
+    duree time not null
+)engine=InnoDB;
+

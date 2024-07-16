@@ -23,7 +23,4 @@ class client_model extends CI_Model {
         // return un tableau associatif representant chaque colonne de la table et leur donnees respectifs
         return $res;
     }
-
-
-
 }
