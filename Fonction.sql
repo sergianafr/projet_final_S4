@@ -11,7 +11,7 @@ BEGIN
         WHERE NOT (
             (dateheuredebut_donnee BETWEEN dr.date_heure_debut AND dr.date_heure_fin)
             OR (dateheurefin_donnee BETWEEN dr.date_heure_debut AND dr.date_heure_fin)
-        ) AND (dateheuredebut_donnee <  dr.date_heure_debut AND dateheurefin_donnee >  dr.date_heure_fin )
+        ) AND (dateheuredebut_donnee >=  dr.date_heure_debut AND dateheurefin_donnee >  dr.date_heure_fin )
         OR dr.id IS NULL;
 END //
 
