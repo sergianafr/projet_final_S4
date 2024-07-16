@@ -20,7 +20,7 @@
                         <select name="service" id="service_input" class="form-select" required>
                             <option value="">Choisir un service</option>
                             <?php foreach ($services as $key => $value) { ?>
-                                <option value="<?= $key ?>"><?= $value ?></option>
+                                <option value="<?= $value['id'] ?>"><?= $value['libelle'] ?></option>
                             <?php } ?>
                         </select>
                         <label for="serviceInput">Service</label>
