@@ -38,7 +38,6 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?=site_url('back_office/slot')?>">Slot</a>
-        
       </li>
     </ul>
   </div>
@@ -47,7 +46,7 @@
       <a href="<?=site_url('back_office/reset_data')?>" class="btn btn-outline-danger">Supprimer base</a>
     </div>
     <div>
-      <a href="" class="btn btn-outline-secondary">Deconnexion</a>
+      <a href="<?= site_url('back_office/sign_out') ?>" class="btn btn-outline-secondary">Deconnexion</a>
     </div>
   </div>
   </div>

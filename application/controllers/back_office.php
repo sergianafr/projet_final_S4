@@ -75,7 +75,7 @@ class back_office extends CI_Controller
 
 		$data['heure_debut'] = "08:00";
 		$data['heure_fin'] = "18:00";
-		$data['clients'] = ['user1','user2','user3'];
+		$data['clients'] = ['user1', 'user2', 'user3'];
 		$data['rdv'] = [
 			// Un crochet correspond a un rdv
 			// title -> le contenu a afficher ( l'heure du rendez vous + service) 
@@ -93,34 +93,45 @@ class back_office extends CI_Controller
 		$this->load->view('templates/back_office_template', $data);
 	}
 
-	function date_reference(){
+	function date_reference()
+	{
 		$this->load->model('date_reference_model', 'date_ref');
-		$data['date_actuelle'] = $this->date_ref->get_last()['date_reference'];
+		$dt = $this->date_ref->get_last();
+		if ($dt != null) {
+			$data['date_actuelle'] = $dt['date_reference'];
+		} else {
+			$data['date_actuelle'] = null;
+		}
 
-		$data['contents']= 'back_office/date_reference' ;
-		$this->load->view('templates/back_office_template',$data);
+		$data['contents'] = 'back_office/date_reference';
+		$this->load->view('templates/back_office_template', $data);
 	}
 
-	/**
-	 * Reinitialisation des donnees de la base
-	 */
-	function reset_data(){
-		// Suppression des donnees de la base
-
-		// Retour a la page d'accueil ou dashbord
+	function reset_data()
+	{
+		$this->crud->clear_tables_data();
 		redirect('back_office/home');
 	}
+
+	function sign_out()
+	{
+		$this->session->sess_destroy();
+		redirect('back_office/login');
+	}	
+
 	/**
 	 * Formulaire d'importation de donnees
 	 */
-	function donnees_csv(){
-		$data['contents']= 'back_office/donnees' ;
-		$this->load->view('templates/back_office_template',$data);
+	function donnees_csv()
+	{
+		$data['contents'] = 'back_office/donnees';
+		$this->load->view('templates/back_office_template', $data);
 	}
 	/**
 	 * Recupere le contenu des fichiers et insertion dans la base de donnee
 	 */
-	function import_files(){
+	function import_files()
+	{
 		// Recuperation du chemin des fichiers
 
 		// Recuperation des contenus
@@ -131,25 +142,26 @@ class back_office extends CI_Controller
 		redirect('back_office/donnees_csv');
 	}
 
-	function slot(){
+	function slot()
+	{
 		// Recuperation de date filtre
 		$date_filtre = null;
 		// La liste des slots
 		// Les details sur les slots
-		$data['slots'] = ['A','B','C'] ;
+		$data['slots'] = ['A', 'B', 'C'];
 
 		// Filtrer par date et slot
-		if($date_filtre == null){
+		if ($date_filtre == null) {
 			// La date filter est la date de reference
 			$date_filtre = '2024-07-16';
 		}
 		// Recuperation de la liste des voitures qui utilisent le slot pour la date donnee
-		foreach($data['slots'] as $index => $slot){
+		foreach ($data['slots'] as $index => $slot) {
 			// La liste des voitures d'une slot par son id et la date de filtre
-			$data['voitures'][$index] = ['voiture1','voiture2','voiture3'];
+			$data['voitures'][$index] = ['voiture1', 'voiture2', 'voiture3'];
 		}
 		// Affichage de la view
 		$data['contents'] = 'back_office/slot';
-		$this->load->view('templates/back_office_template',$data);
+		$this->load->view('templates/back_office_template', $data);
 	}
 }
