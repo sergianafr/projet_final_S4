@@ -39,6 +39,9 @@
       <li class="nav-item">
         <a class="nav-link" href="<?=site_url('back_office/slot')?>">Slot</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=site_url('back_office/dashbord')?>">Dashbord</a>
+      </li>
     </ul>
   </div>
   <div class="d-flex gap-2">

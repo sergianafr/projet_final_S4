@@ -1,4 +1,4 @@
-<footer class=" bg-light">
+            <footer class=" bg-light">
                 <div class="container">
                     <div class="row">
                         <div class=" col text-dark">
@@ -25,6 +25,6 @@
         </div><!-- end wrap -->
         <script src="<?=base_url('assets/js/bootstrap.bundle.min.js')?>"></script>
         <script src="<?=base_url('assets/js/calendar.min.js')?>"></script>
-        <script src="<?=base_url('assets/js/chart.js')?>"></script>
+        <script type="module" src="<?=base_url('assets/js/chart.js')?>"></script>
     </body>
 </html>
