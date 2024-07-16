@@ -82,6 +82,8 @@ CREATE TABLE travaux_temp(
     montant double precision,
     date_paiement date
 );
+SELECT DISTINCT voiture, type_vehicule.id as id from travaux_temp join type_vehicule on type_vehicule.libelle = travaux_temp.type_voiture;
+
 
 CREATE VIEW v_devis AS
 SELECT 

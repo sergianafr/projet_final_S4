@@ -14,5 +14,11 @@ class type_vehicule_model extends CI_Model {
         $this->db->query($query);
     }
 
+    public function get_by_name($name){
+        $query = $this->db->query('SELECT * FROM type_vehicule WHERE libelle=?', $name);
+        $res = $query->row_array();
+
+        return $res;
+    }
 
 }
