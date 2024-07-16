@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class dashbord_model extends CI_Model
+class Dashbord_model extends CI_Model
 {
 
     public function get_impayer($type,$date)

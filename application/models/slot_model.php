@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class slot_model extends CI_Model
+class Slot_model extends CI_Model
 {
 
     public function get_slots_disponibles($date_debut, $date_fin)

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class rendez_vous_model extends CI_Model
+class Rendez_vous_model extends CI_Model
 {
 
     public function __construct()

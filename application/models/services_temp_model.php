@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class services_temp_model extends CI_Model
+class Services_temp_model extends CI_Model
 {
     public function __construct()
     {

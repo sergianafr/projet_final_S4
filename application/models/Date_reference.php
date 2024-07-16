@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class date_reference_model extends CI_Model
+class Date_reference_model extends CI_Model
 {
     public function get_last()
     {
