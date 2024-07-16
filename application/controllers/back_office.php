@@ -170,6 +170,7 @@ class back_office extends CI_Controller
 	 * Affichage du dashbord
 	 */
 	function dashbord(){
+		// Recuperation des variables necessaires
 		$data['contents'] = "back_office/dashbord";
 		$this->load->view('templates/back_office_template',$data);
 	}
