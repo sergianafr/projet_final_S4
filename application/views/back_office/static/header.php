@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="<?=base_url('assets/font/bootstrap-icons.min.css')?>">
   <script src="<?= base_url('assets/js/jquery-3.2.1.min.js') ?>"></script>
   <link rel="stylesheet" href="<?=base_url('assets/css/specific.css')?>">
+  <script src="<?=base_url('assets/js/Chart.min.js')?>"></script>
+
   <title>Back Office</title>
 </head>
 <body>
@@ -38,6 +40,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?=site_url('back_office/slot')?>">Slot</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=site_url('back_office/dashbord')?>">Dashbord</a>
       </li>
     </ul>
   </div>
