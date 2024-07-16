@@ -47,8 +47,9 @@ class rendez_vous_model extends CI_Model
         $this->db->insert('details_rdv', $details_rdv);
     }
 
-    public function add_date_payement($id_rdv, $date){
-        $this->db->set('date_payement',$date);
+    public function add_date_payement($id_rdv, $date)
+    {
+        $this->db->set('date_payement', $date);
         $this->db->where('id', $id_rdv);
         $this->db->update('rendez_vous');
     }

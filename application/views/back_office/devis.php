@@ -1,6 +1,3 @@
-<?php
-var_dump($devis);
-?>
 <section class="my-3">
     <div class="container">
         <div class="row mb-3">
@@ -11,11 +8,11 @@ var_dump($devis);
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body bg-light">
-                            <h3 class="card-title text-dark">Detail devis</h5>
+                            <h3 class="card-title text-dark">Detail du devis</h5>
                                 <div class="container">
                                     <div class="nav-item d-inline">
                                         <h4 class="d-inline">
-                                            <p class="text-dark"> DATE rendez-vous : ##/##/##</p>
+                                            <p class="text-dark"> du : <?= $value['date_rdv'] ?></p>
                                         </h4>
                                     </div>
                                     <table class="table">
@@ -29,10 +26,10 @@ var_dump($devis);
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>MTXXXX</td>
-                                                <td>Standard</td>
-                                                <td>A</td>
-                                                <td>PRIX</td>
+                                                <td><?= $value['matricule'] ?></td>
+                                                <td><?= $value['libelle_service'] ?></td>
+                                                <td><?= $value['libelle_slot'] ?></td>
+                                                <td><?= $value['prix_service'] ?> Ar</td>
                                             </tr>
                                         </tbody>
                                     </table>
