@@ -25,5 +25,6 @@
         </div><!-- end wrap -->
         <script src="<?=base_url('assets/js/bootstrap.bundle.min.js')?>"></script>
         <script src="<?=base_url('assets/js/calendar.min.js')?>"></script>
+        <script src="<?=base_url('assets/js/chart.js')?>"></script>
     </body>
 </html>
