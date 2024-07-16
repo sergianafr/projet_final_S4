@@ -137,18 +137,20 @@ class back_office extends CI_Controller
 		$service_file = $this->input->post('service_file');
 		$travaux_file = $this->input->post('travaux_file');
 
+		$err = []; // Tableau qui va contenir tout les erreurs
 
-		// Insertion
 		$this->load->model('type_service_model', 'ts');
-		if ($service_file != null) {
-			$this->ts->import_csv($service_file);
+		if ($service_file != "") {
+			$errors = $this->ts->import_csv($service_file);
+			if (count($errors) > 0) $err[] = $errors;
 		}
-		if ($travaux_file != null) {
-			$this->ts->import_csv($travaux_file);
+		if ($travaux_file != "") {
+			$errors = $this->ts->import_csv($travaux_file);
+			if (count($errors) > 0) $err[] = $errors;
 		}
 
-		// Redirection
-		redirect('back_office/donnees_csv');
+		if (count($err) > 0) var_dump($err);
+		else redirect('back_office/donnees_csv');
 	}
 
 	function slot()

@@ -29,7 +29,9 @@ class type_service_model extends CI_Model
 
     // La seule fonction a appeler pour importer un csv dans base 
     public function import_csv($fileName){
-        $this->s_temp->save_to_temp($fileName);
+        $errors = $this->s_temp->save_to_temp($fileName);
+        if (count($errors) > 0) return $errors;
+
         $query = "INSERT INTO type_service(libelle, duree) SELECT DISTINCT * FROM services_temp";
         $this->db->query($query);
     }

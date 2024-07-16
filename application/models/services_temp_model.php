@@ -44,7 +44,7 @@ class services_temp_model extends CI_Model
                     if($serv_data['duree'] == null){
                         $errors['duree'] = "duree null a la ligne ".$count_row;
                         $insert = false;
-                    } else if(preg_match($pattern, $serv_data['duree'])){
+                    } else if(!preg_match($pattern, $serv_data['duree'])){
                         $errors['duree'] = "duree qui ne correspond pas au format d'heure".$count_row;
                         $insert = false;
                     }
