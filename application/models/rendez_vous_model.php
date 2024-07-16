@@ -11,7 +11,7 @@ class rendez_vous_model extends CI_Model
         $this->load->model('slot_model');
         $this->load->model('type_service_model'); 
         $this->load->model('date_reference_model');
-        $this->load->model('montant_type_model');
+        $this->load->model('montant_type_service_model');
     }
 
     // fonction qui crée un rendez-vous et insere les données dans la table details_rdv
@@ -48,10 +48,15 @@ class rendez_vous_model extends CI_Model
         $this->db->insert('details_rdv', $details_rdv);
     }
 
+    public function import_csv(){
+        $liste_travaux = $this->db->get('travaux_temp');
+        
+    }
     public function add_date_payement($id_rdv, $date)
     {
         $this->db->set('date_payement', $date);
         $this->db->where('id', $id_rdv);
         $this->db->update('rendez_vous');
     }
-}
+
+    }
